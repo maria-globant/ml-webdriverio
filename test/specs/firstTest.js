@@ -1,12 +1,12 @@
-describe('Ecommerce Application', () => {
+describe('Ecommerce Application', async () => {
 
-    it('Login Fail page', () => {
+    it('Login Fail page', async () => {
 
         //webdriverio Async
 
-        browser.url("https://rahulshettyacademy.com/loginpagePractise/")
+        await browser.url("https://rahulshettyacademy.com/loginpagePractise/")
 
-        console.log("Titulo: ", browser.getTile())
+        console.log("Titulo: ", await browser.getTitle())
     })
 
 

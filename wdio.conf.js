@@ -21,7 +21,8 @@ export const config = {
     // of the config file unless it's absolute.
     //
     specs: [
-        './test/specs/**/*.js'
+        //'./test/specs/**/*.js'
+        './test/specs/firstTest.js'
     ],
     // Patterns to exclude.
     exclude: [
@@ -109,7 +110,7 @@ export const config = {
     // Make sure you have the wdio adapter package for the specific framework installed
     // before running any tests.
     framework: 'mocha',
-    
+
     //
     // The number of times to retry the entire specfile when it fails as a whole
     // specFileRetries: 1,
