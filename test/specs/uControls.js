@@ -30,10 +30,17 @@ describe('UI Controls Test Suit', async () => {
         await modal.waitForDisplayed()
         await $("#okayBtn").click()
 
-        //await browser.pause(3000)
-
         await $$(".customradio")[0].$("span").click()
         await expect(modal).not.toBeDisplayed()
+
+        const dropdowns = await $("select.form-control")
+        await dropdowns.selectByAttribute('value', 'teach')
+        await dropdowns.selectByVisibleText("Consultant")
+        await dropdowns.selectByIndex(0)
+
+        console.log(await dropdowns.getValue())
+
+        await browser.pause(2000)
 
     })
 })
