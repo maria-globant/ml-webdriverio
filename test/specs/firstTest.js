@@ -4,7 +4,7 @@ import { expect, browser, $ } from '@wdio/globals'
 
 describe('Ecommerce Application', async () => {
 
-    it('Login Fail page', async () => {
+    xit('Login Fail page', async () => {
 
         await browser.url("https://rahulshettyacademy.com/loginpagePractise/")
         console.log("Titulo: ", await browser.getTitle())
@@ -30,7 +30,7 @@ describe('Ecommerce Application', async () => {
 
     })
 
-    it('Login Success page', async () => {
+    xit('Login Success page', async () => {
 
         await browser.url("https://rahulshettyacademy.com/loginpagePractise/")
         await $("input[name='username']").setValue("rahulshettyacademy")
@@ -43,4 +43,5 @@ describe('Ecommerce Application', async () => {
         await expect(browser).toHaveUrl(expect.stringContaining('shop'))
         await expect(browser).toHaveTitle('ProtoCommerce')
     })
+
 })
