@@ -40,6 +40,8 @@ describe('UI Controls Test Suit', async () => {
 
         console.log(await dropdowns.getValue())
 
+        //Uso de chai para manejo de strings
+
         await browser.pause(2000)
 
     })
