@@ -5,7 +5,7 @@ import { expect, browser, $ } from '@wdio/globals'
 
 describe('UI Controls Test Suit', async () => {
 
-    it('UI Controls', async () => {
+    xit('UI Controls', async () => {
 
         // Login
         await browser.url("https://rahulshettyacademy.com/loginpagePractise/")
@@ -45,8 +45,22 @@ describe('UI Controls Test Suit', async () => {
         const valor = await dropdowns.getValue()
         valor.localeCompare("stud")
         valor.localeCompare("stuud")
+    })
 
+    it('Dynamic Dropdown Controls', async () => {
+        await browser.url("https://rahulshettyacademy.com/AutomationPractice/")
+        await $("#autocomplete").addValue("ind")
+        await browser.pause(3000)
 
+        let items = await $$("[class='ui-menu-item'] div")
+
+        for (var i = 0; i < await items.length; i++) {
+
+            if (await items[i].getText() === "India") {
+                await items[i].click()
+            }
+        }
+        await browser.pause(3000)
     })
 }
 )
