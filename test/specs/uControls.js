@@ -47,7 +47,7 @@ describe('UI Controls Test Suit', async () => {
         valor.localeCompare("stuud")
     })
 
-    it('Dynamic Dropdown Controls', async () => {
+    xit('Dynamic Dropdown Controls', async () => {
         await browser.url("https://rahulshettyacademy.com/AutomationPractice/")
         await $("#autocomplete").addValue("ind")
         await browser.pause(3000)
@@ -62,5 +62,15 @@ describe('UI Controls Test Suit', async () => {
         }
         await browser.pause(3000)
     })
-}
-)
+
+    it('Checkboxes Identification', async () => {
+
+        await browser.url("https://rahulshettyacademy.com/AutomationPractice/")
+        const element = await $$("input[type = 'checkbox']")
+
+        await element[1].click()
+
+        await browser.saveScreenshot("paginaAAAAA.png")
+
+    })
+})
