@@ -11,6 +11,7 @@ describe('Functional Testing on Application', async () => {
         await browser.pause(3000)
 
         await $("a[href = '#top']").click()
+
         await browser.pause(3000)
 
     })
