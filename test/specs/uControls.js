@@ -68,6 +68,8 @@ describe('UI Controls Test Suit', async () => {
         await browser.url("https://rahulshettyacademy.com/AutomationPractice/")
         const element = await $$("input[type = 'checkbox']")
 
+        // console.log(await element[1].isSelected())
+
         await element[1].click()
 
         await browser.saveScreenshot("paginaAAAAA.png")
