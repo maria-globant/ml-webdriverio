@@ -2,6 +2,8 @@
 
 import { expect } from 'chai'
 
+//import { expect as expectChai } from 'chai'
+
 describe('Functional Testing on Application', async () => {
 
     it('Scrolling and Mouse hover', async () => {
@@ -20,9 +22,9 @@ describe('Functional Testing on Application', async () => {
 */
         await browser.url("https://only-testing-blog.blogspot.com/2014/09/selectable.html")
 
-        //await $("button[ondblclick='myFunction()']").doubleClick()
         await $("button").doubleClick()
-        await browser.pause(5000)
+        //await $("button").doubleClick()
+        //await browser.pause(5000)
 
 
         //await browser.isAlertOpen()
@@ -33,7 +35,7 @@ describe('Functional Testing on Application', async () => {
         //console.log("Abrio el alerta: ------------------------", await browser.isAlertOpen())
         //await browser.execute('window.alert("You doble clicked. Thank you")')
         //console.log("Expect: ---------------------", await browser.isAlertOpen())
-        //console.log("Get Alert Text ------------------", await browser.getAlertText())
+        console.log("Get Alert Text ------------------", await browser.getAlertText())
 
         //console.log("Antes del get Alert --------------------------------", await browser.isAlertOpen())
         //console.log(browser.isAlertOpen()); // outputs: false
