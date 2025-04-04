@@ -49,10 +49,22 @@ describe('Functional Testing on Application', async () => {
     it('Web Tables validation', async () => {
         await browser.url("https://rahulshettyacademy.com/seleniumPractise/#/offers")
         // tr th:nth-child(1)
-        $("tr th:nth-child(1)").click()
+        await $("tr th:nth-child(1)").click()
 
-        const veggies = $$("tr td:nth-child(1)")
+        const veggiesLocators = await $$("tr td:nth-child(1)")
 
+        const veggiesName = await veggiesLocators.map(async veggie => await veggie.getText())
+
+        console.log("veggie ------ 1", await veggiesName[1])
+
+        const sortedVeggies = veggiesName.sort()
+
+        console.log("veggie ordenadas", sortedVeggies)
+
+        if (expect(veggiesName).to.equal(sortedVeggies))
+            console.log("--------------------- Ordenadas")
+        else
+            console.log("--------------------- No estan ordenadas")
 
     })
 }
