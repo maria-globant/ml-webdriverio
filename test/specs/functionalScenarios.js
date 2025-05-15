@@ -6,7 +6,7 @@ import { expect } from 'chai'
 
 describe('Functional Testing on Application', async () => {
 
-    it('Scrolling and Mouse hover', async () => {
+    xit('Scrolling and Mouse hover', async () => {
         /**
         await browser.url("https://rahulshettyacademy.com/AutomationPractice/")
  
@@ -45,6 +45,27 @@ describe('Functional Testing on Application', async () => {
         //console.log("EXPECT -----------------------", expect(await browser.isAlertOpen()).to.be.true)
         //await expect(msg).to.equal('You doble clicked. Thank you')
         //console.log("Expect ------------------", await expect(msg).to.equal('You doble clicked. Thank you..'))
+    })
+    it('Web Tables validation', async () => {
+        await browser.url("https://rahulshettyacademy.com/seleniumPractise/#/offers")
+        // tr th:nth-child(1)
+        await $("tr th:nth-child(1)").click()
+
+        const veggiesLocators = await $$("tr td:nth-child(1)")
+
+        const veggiesName = await veggiesLocators.map(async veggie => await veggie.getText())
+
+        console.log("veggie ------ 1", await veggiesName[1])
+
+        const sortedVeggies = veggiesName.sort()
+
+        console.log("veggie ordenadas", sortedVeggies)
+
+        if (expect(veggiesName).to.equal(sortedVeggies))
+            console.log("--------------------- Ordenadas")
+        else
+            console.log("--------------------- No estan ordenadas")
+
     })
 }
 )
