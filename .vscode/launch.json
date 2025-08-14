@@ -9,11 +9,11 @@
     "autoAttachChildProcesses": true,
     "program": "${workspaceRoot}/node_modules/@wdio/cli/bin/wdio.js",
     "console": "integratedTerminal",
-    "skipFiles": [
-        "${workspaceFolder}/node_modules/**/*.js",
-        "${workspaceFolder}/lib/**/*.js",
-        "<node_internals>/**/*.js"
-    ]
+//    "skipFiles": [
+//        "${workspaceFolder}/node_modules/**/*.js",
+//        "${workspaceFolder}/lib/**/*.js",
+//        "<node_internals>/**/*.js"
+//    ]
     },
     ]
 }
