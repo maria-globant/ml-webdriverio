@@ -7,7 +7,7 @@ import { expect } from '@wdio/globals';
 
 import { expect as expectchai } from 'chai'
 
-// comando:: npx wdio run wdio.conf.js
+// comando para correr:: npx wdio run wdio.conf.js 
 
 describe('Functional Testing on Application', async () => {
 
