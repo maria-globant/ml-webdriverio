@@ -54,23 +54,24 @@ describe('Functional Testing on Application', async () => {
     xit('Web Tables validation', async () => {
         await browser.url("https://rahulshettyacademy.com/seleniumPractise/#/offers")
         // tr th:nth-child(1)
-        await $("tr th:nth-child(1)").click()
+        //await $("tr th:nth-child(1)").click()
 
         const veggiesLocators = await $$("tr td:nth-child(1)")
+        const OriginalveggiesName = await veggiesLocators.map(async veggie => await veggie.getText())
 
-        const veggiesName = await veggiesLocators.map(async veggie => await veggie.getText())
+        console.log("OriginalveggiesName ------ 1", OriginalveggiesName)
 
-        console.log("veggie ------ 1", await veggiesName[1])
-
-        const sortedVeggies = veggiesName.sort()
+        const veggies = await OriginalveggiesName.slice()
+        const sortedVeggies = await veggies.sort()
 
         console.log("veggie ordenadas", sortedVeggies)
 
-        if (expect(veggiesName).to.equal(sortedVeggies))
+        expectChai(OriginalveggiesName).to.eql(sortedVeggies)
+
+/*        if (expect(veggiesName).to.equal(sortedVeggies))
             console.log("--------------------- Ordenadas")
         else
-            console.log("--------------------- No estan ordenadas")
-
+            console.log("--------------------- No estan ordenadas") */
     })
     it('Web Tables Filter validation', async () => {
         await browser.url("https://rahulshettyacademy.com/seleniumPractise/#/offers")
