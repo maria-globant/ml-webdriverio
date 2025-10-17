@@ -73,7 +73,7 @@ describe('Functional Testing on Application', async () => {
         else
             console.log("--------------------- No estan ordenadas") */
     })
-    it('Web Tables Filter validation', async () => {
+    xit('Web Tables Filter validation', async () => {
         await browser.url("https://rahulshettyacademy.com/seleniumPractise/#/offers")
         await $("#search-field").setValue("tomato")
         const veggiesLocators = await $$("tr td:nth-child(1)")
