@@ -3,6 +3,8 @@ import { expect, browser, $ } from '@wdio/globals'
 
 //import { expect } from 'chai'
 
+import { expect as expectchai } from 'chai'
+
 describe('UI Controls Test Suit', async () => {
 
     xit('UI Controls', async () => {
