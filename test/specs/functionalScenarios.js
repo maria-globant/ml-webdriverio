@@ -1,8 +1,13 @@
 'use strict'
+import { expect } from '@wdio/globals';
 
-import { expect } from 'chai'
+//  npm install chai-dom --save-dev
 
-//import { expect as expectChai } from 'chai'
+//import { expect } from 'chai'
+
+import { expect as expectchai } from 'chai'
+
+// comando:: npx wdio run wdio.conf.js
 
 describe('Functional Testing on Application', async () => {
 
@@ -46,7 +51,7 @@ describe('Functional Testing on Application', async () => {
         //await expect(msg).to.equal('You doble clicked. Thank you')
         //console.log("Expect ------------------", await expect(msg).to.equal('You doble clicked. Thank you..'))
     })
-    it('Web Tables validation', async () => {
+    xit('Web Tables validation', async () => {
         await browser.url("https://rahulshettyacademy.com/seleniumPractise/#/offers")
         // tr th:nth-child(1)
         await $("tr th:nth-child(1)").click()
@@ -67,5 +72,20 @@ describe('Functional Testing on Application', async () => {
             console.log("--------------------- No estan ordenadas")
 
     })
+    it('Web Tables Filter validation', async () => {
+        await browser.url("https://rahulshettyacademy.com/seleniumPractise/#/offers")
+        await $("#search-field").setValue("tomato")
+        const veggiesLocators = await $$("tr td:nth-child(1)")
+
+        await expect(await veggiesLocators).toBeElementsArrayOfSize({eq:1})
+        console.log( "ToBeElements ArrayOfSize", await expect(await veggiesLocators).toBeElementsArrayOfSize({eq:1}))
+
+        console.log("Tomato ------------ ", await veggiesLocators[0].getText())
+        await veggiesLocators[0].getText()
+
+        //await exp
+
+    })
+
 }
 )
