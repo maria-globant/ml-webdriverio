@@ -17,7 +17,14 @@ describe ('Windows and Frames Miscellanous', async() =>
         await browser.switchToWindow(handles[0])
         console.log("Title2  ---------------------------------", await browser.getTitle())
 
-        
+        await browser.newWindow("https://google.com")
+
+        console.log("Title3  ---------------------------------", await browser.getTitle())
+        await browser.pause(3000)
+
+        await browser.switchWindow("https://rahulshettyacademy.com/loginpagePractise/")
+        await $("#username").setValue("helloSwitchback")
+        await browser.pause(3000)
     }   
     )
 
