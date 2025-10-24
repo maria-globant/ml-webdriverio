@@ -1,12 +1,30 @@
 import { expect as expectchai } from 'chai'
 
-Describe ('Windows and Frames Miscellanous', async() => 
+// comando para correr:: npx wdio run wdio.conf.js 
+
+describe ('Windows and Frames Miscellanous', async() => 
 {
-    it('Parent and Child windows swtich', async() =>
+    it('Parent and Child windows swtich', async () =>
     {
         await browser.url("https://rahulshettyacademy.com/loginpagePractise/")
-        await $(".blinkingText[href='https://rahulshettyacademy.com/documents-request']").click
+        await $(".blinkingText").click()
+        const handles = await browser.getWindowHandles()
+        await browser.switchToWindow(handles[1])
+       
         console.log( "H1 ----------------------------- ",await $("h1").getText())
+        console.log("Title ---------------------------------", await browser.getTitle())
+        await browser.closeWindow()
+        await browser.switchToWindow(handles[0])
+        console.log("Title2  ---------------------------------", await browser.getTitle())
+
+        await browser.newWindow("https://google.com")
+
+        console.log("Title3  ---------------------------------", await browser.getTitle())
+        await browser.pause(3000)
+
+        await browser.switchWindow("https://rahulshettyacademy.com/loginpagePractise/")
+        await $("#username").setValue("helloSwitchback")
+        await browser.pause(3000)
     }   
     )
 
