@@ -14,7 +14,6 @@ describe ("Ecommerce Application", async () =>
         await password.setValue("learning")
         await $("#signInBtn").click()
         await $("*=Checkout").waitForExist()
-
         const cards = await $$("(//div[@class='card h-100'])")
 
         for (let i=0; i < await cards.length; i++)
