@@ -30,8 +30,20 @@ describe ("Ecommerce Application", async () =>
         }
         await link.click()
 
+
+
         await browser.pause(5000)
+
+        const productPrices = await $$("//tr/td[4]/strong")
+
+       const textPrice = await productPrices.map( async (text) => await (text.getText()))
+       const prices = await textPrice.map( price => parseInt(price.split(".")[1].trim())).reduce( (accum, price) => accum+price, 0)
+        console.log("product Prices Reduce ----------------",  prices)
+
+
     }
+
+
     )
 }
 )
