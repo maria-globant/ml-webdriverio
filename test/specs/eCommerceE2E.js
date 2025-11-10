@@ -60,6 +60,7 @@ describe ("Ecommerce Application", async () =>
        // await expect( await $(".alert-success")).toHaveTextContaining("Success")
 
        await expect( await $(".alert-success")).toHaveText(expect.stringContaining("Success"))
+       
     }
 
     )
