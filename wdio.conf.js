@@ -22,11 +22,11 @@ export const config = {
     //
     specs: [
         //'.test/specs/**/*.js'
-        //'./test/specs/firstTest.js'
+        './test/specs/firstTest.js'
         // './test/specs/uControls.js'
         //'./test/specs/functionalScenarios.js'
         //'./test/specs/windowsFrames.js'
-        './test/specs/eCommerceE2E.js'
+        //'./test/specs/eCommerceE2E.js'
     ],
     // Patterns to exclude.
     exclude: [

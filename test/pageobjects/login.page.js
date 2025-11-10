@@ -9,7 +9,7 @@ class LoginPage extends Page {
      * define selectors using getter methods
      */
     get inputUsername () {
-        return $('#username');
+        return $('#username' );
     }
 
     get inputPassword () {
@@ -17,8 +17,13 @@ class LoginPage extends Page {
     }
 
     get btnSubmit () {
-        return $('button[type="submit"]');
+        return $('#signInBtn');
     }
+
+    get alert() {
+        return $(".alert-danger")
+    }
+
 
     /**
      * a method to encapsule automation code to interact with the page
@@ -38,4 +43,4 @@ class LoginPage extends Page {
     }
 }
 
-export default new LoginPage();
+export default LoginPage;
