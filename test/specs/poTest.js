@@ -1,4 +1,5 @@
 //import { expect } from "expect-webdriverio"
+
 import { expect, browser, $ } from '@wdio/globals'
 import LoginPage from '../pageobjects/login.page.js'
 
@@ -9,6 +10,10 @@ describe('Ecommerce Application', async () => {
 
         await browser.url("https://rahulshettyacademy.com/loginpagePractise/")
         console.log("Titulo: ", await browser.getTitle())
+        await expect(browser).toHaveTitle(expect.stringContaining("Rahul Shetty"))
+
+        let  loginPage = new LoginPage ()
+        loginPage.Login("rahulshettyacademy", "Second")
 
         //await expect(browser).toHaveTitle(expect.stringContaining("Rahul Shetty"))
         //await $("input[name='username']").setValue("rahulshettyacademy")
