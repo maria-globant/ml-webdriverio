@@ -6,14 +6,14 @@ import LoginPage from '../pageobjects/login.page.js'
 
 describe('Ecommerce Application', async () => {
 
-    xit('Login Fail page', async () => {
+    it('Login Fail page', async () => {
 
         await browser.url("https://rahulshettyacademy.com/loginpagePractise/")
         console.log("Titulo: ", await browser.getTitle())
         await expect(browser).toHaveTitle(expect.stringContaining("Rahul Shetty"))
 
         let  loginPage = new LoginPage ()
-        loginPage.Login("rahulshettyacademy", "Second")
+        await loginPage.Login("rahulshettyacademy", "Second")
 
         //await expect(browser).toHaveTitle(expect.stringContaining("Rahul Shetty"))
         //await $("input[name='username']").setValue("rahulshettyacademy")
@@ -26,20 +26,24 @@ describe('Ecommerce Application', async () => {
 
         //await loginPage.Login("rahulshettyacademy", "Second")
 
-        await console.log(await $(".alert-danger").getText())
+        //await console.log(await $(".alert-danger").getText())
 
-        await browser.waitUntil(async () => await $("#signInBtn").getAttribute('value') === 'Sign In',
+        await console.log("Alert ------------------", await loginPage.alert.getText())
+
+        await browser.waitUntil(async () => await loginPage.signIn.getAttribute('value') === 'Sign In',
             {
                 timeout: 3000,
                 timeoutMsg: "Error message is not showing up"
             })
         await console.log(await $(".alert-danger").getText())
+        
+        await console.log("Alert ------------------", await loginPage.alert.getText())
 
-        await expect($("p")).toHaveText(expect.stringContaining("username is"))
+        await expect(await loginPage.textInfo).toHaveText(expect.stringContaining("username is"))
 
     })
 
-    it('Login Success page', async () => {
+    xit('Login Success page', async () => {
 
         await browser.url("https://rahulshettyacademy.com/loginpagePractise/")
      //   await $("input[name='username']").setValue("rahulshettyacademy")

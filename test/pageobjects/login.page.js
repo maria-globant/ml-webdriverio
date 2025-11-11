@@ -24,8 +24,12 @@ class LoginPage extends Page {
         return $(".alert-danger")
     }
 
-    get signIng () {
+    get signIn () {
         return $("#signInBtn")
+    }
+
+    get textInfo  () {
+        return $("p")
     }
 
     /**

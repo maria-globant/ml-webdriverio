@@ -1,6 +1,6 @@
 {
   "name": "ml-webdriverio",
-  "type": "module",
+  "type": "commonjs",
   "devDependencies": {
     "@testing-library/jest-dom": "^6.9.1",
     "@wdio/cli": "^9.10.1",
