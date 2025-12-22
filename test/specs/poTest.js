@@ -10,23 +10,11 @@ describe('Ecommerce Application', async () => {
 
         await browser.url("https://rahulshettyacademy.com/loginpagePractise/")
         console.log("Titulo: ", await browser.getTitle())
+        
         await expect(browser).toHaveTitle(expect.stringContaining("Rahul Shetty"))
 
         let  loginPage = new LoginPage ()
         await loginPage.Login("rahulshettyacademy", "Second")
-
-        //await expect(browser).toHaveTitle(expect.stringContaining("Rahul Shetty"))
-        //await $("input[name='username']").setValue("rahulshettyacademy")
-        //await browser.pause(2000)
-        //await $("input[name='username']").setValue("Second")
-        //const password = $("//input[@id='password']")
-        //await password.setValue("learning")
-        //await $("#signInBtn").click()
-        //await browser.pause(2000)
-
-        //await loginPage.Login("rahulshettyacademy", "Second")
-
-        //await console.log(await $(".alert-danger").getText())
 
         await console.log("Alert ------------------", await loginPage.alert.getText())
 
