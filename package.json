@@ -3,7 +3,7 @@
   "type": "commonjs",
   "devDependencies": {
     "@testing-library/jest-dom": "^6.9.1",
-    "@wdio/cli": "^9.10.1",
+    "@wdio/cli": "^9.21.1",
     "@wdio/local-runner": "^9.10.1",
     "@wdio/mocha-framework": "^9.10.1",
     "@wdio/spec-reporter": "^9.10.1",
