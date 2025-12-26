@@ -2,15 +2,17 @@
 
 import { expect, browser, $ } from '@wdio/globals'
 import LoginPage from '../pageobjects/login.page.js'
+//import ShopPage from '../pageobjects/shop.js'
+import Shop from '../pageobjects/shop.js'
+import { expect as expectchai } from 'chai'
 
 
 describe('Ecommerce Application', async () => {
 
-    it('Login Fail page', async () => {
+    xit('Login Fail page', async () => {
 
-        await browser.url("https://rahulshettyacademy.com/loginpagePractise/")
+        await browser.url('https://rahulshettyacademy.com/angularpractice/shop');
         console.log("Titulo: ", await browser.getTitle())
-        
         await expect(browser).toHaveTitle(expect.stringContaining("Rahul Shetty"))
 
         let  loginPage = new LoginPage ()
@@ -34,9 +36,6 @@ describe('Ecommerce Application', async () => {
     xit('Login Success page', async () => {
 
         await browser.url("https://rahulshettyacademy.com/loginpagePractise/")
-     //   await $("input[name='username']").setValue("rahulshettyacademy")
-     //   const password = $("//input[@id='password']")
-     //   await password.setValue("learning")
 
         let  loginPage = new LoginPage ()
 
@@ -44,14 +43,55 @@ describe('Ecommerce Application', async () => {
 
         await console.log ("Alert ------------", await loginPage.alert.getText())
 
-        /**** 
-        await $("#signInBtn").click()
 
-        await $(".btn-primary").waitForExist(2000)
+    })
 
-        await expect(browser).toHaveUrl(expect.stringContaining('shop'))
-        await expect(browser).toHaveTitle('ProtoCommerce')
-        ***/
+   it ("End to End test", async() => {
+            
+            const products = ['iphone X', 'Blackberry']
+            let  shopPage = new Shop()
+            let  loginPage = new LoginPage ()
+       // await browser.url("https://rahulshettyacademy.com/loginpagePractise/")
+        await browser.url("https://rahulshettyacademy.com/angularpractice/shop")
+
+        console.log("Titulo: ---------------------", await browser.getTitle())
+        
+          //  await expect(browser).toHaveTitle(expect.stringContaining("Rahul Shetty"))
+          await expect(browser).toHaveTitle(expect.stringContaining("ProtoCommerce"))
+            
+            const title = await browser.getTitle();
+            
+           //await loginPage.Login("rahulshettyacademy", "learning")
+
+            await shopPage.checkout.waitForExist()
+
+            await shopPage.addProductsToCart(products)
+
+             await shopPage.checkout.click()
+
+        const productPrices = await $$("//tr/td[4]/strong")
+
+       const textPrice = await productPrices.map( async (text) => await (text.getText()))
+       const prices = await textPrice.map( price => parseInt(price.split(".")[1].trim())).reduce( (accum, price) => accum+price, 0)
+        console.log("product Prices Reduce ----------------",  prices)
+
+       const totalValue = await $("h3 strong").getText()
+       const totalIntValue = parseInt(totalValue.split(".")[1].trim())
+
+        await expectchai(prices).to.equal(totalIntValue)
+
+        await $(".btn-success").click()   
+        await $("#country").setValue("ind")   
+        await $(".lds-ellipsis").waitForExist({reverse:true})
+
+        await $("=India").click()
+
+        await $("input[type = 'submit']").click()
+
+       // await expect( await $(".alert-success")).toHaveTextContaining("Success")
+
+       await expect( await $(".alert-success")).toHaveText(expect.stringContaining("Success"))
+          
     })
 
 })

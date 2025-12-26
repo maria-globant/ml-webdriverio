@@ -34,7 +34,7 @@ describe('Ecommerce Application', async () => {
 
     })
 
-    it('Login Success page', async () => {
+    xit('Login Success page', async () => {
 
         await browser.url("https://rahulshettyacademy.com/loginpagePractise/")
      //   await $("input[name='username']").setValue("rahulshettyacademy")

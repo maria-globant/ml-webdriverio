@@ -13,6 +13,7 @@
     "chai": "^5.2.0",
     "expect": "^29.7.0",
     "expect-webdriverio": "^5.1.0",
-    "mocha": "^11.1.0"
+    "mocha": "^11.1.0",
+    "selenium-webdriver": "^4.39.0"
   }
 }
