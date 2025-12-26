@@ -1,3 +1,6 @@
+import { $ } from '@wdio/globals'
+import Page from './page.js'
+
 /*
             const link = await $("*=Checkout")
             await link.waitForExist()
@@ -17,8 +20,7 @@
             await link.click()
 */
 
-import { $ } from '@wdio/globals'
-import Page from './page.js'; 
+
 
 /**
  * sub page containing specific selectors and methods for a specific page
@@ -32,9 +34,23 @@ class Shop extends Page {
     get cards() {
         return $$("(//div[@class='card h-100'])")
     }
+
+    async addProductsToCart (products) {
+                    for (let i=0; i < await this.cards.length; i++)
+                    {
+                        const card = await this.cards[i].$("div h4 a")
+                        console.log (" -----------------  Producto --",i, await this.cards[i].getText())
+            
+                        if ( products.includes(await card.getText()) )
+                        {
+                                await this.cards[i].$(".card-footer button").click()
+                                
+                        }
+                    }
     
+    }
 
-
+    
 }
 
 export default Shop;

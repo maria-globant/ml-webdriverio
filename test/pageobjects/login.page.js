@@ -1,5 +1,5 @@
 import { $ } from '@wdio/globals'
-import Page from './page.js'; 
+import Page from './page.js' 
 
 /**
  * sub page containing specific selectors and methods for a specific page
@@ -9,7 +9,9 @@ class LoginPage extends Page {
      * define selectors using getter methods
      */
     get inputUsername () {
-        return $('#username' );
+        //console.log(" username  ------------- ", await $('#username').isDisplayed());
+
+         return $('#username' );
     }
 
     get inputPassword () {
@@ -37,6 +39,17 @@ class LoginPage extends Page {
      * e.g. to login using username and password
      */
     async Login (username, password) {
+       // await this.inputUsername.waitForDisplayed({ timeout: 5000 });
+
+       const currentUrl = await browser.getUrl();
+console.log('La URL actual es:', currentUrl);
+
+       console.log("username ------------------", username)
+        console.log("password ------------------", password)
+
+        await this.inputUsername.waitForExist({ timeout: 5000 });
+        await this.inputUsername.waitForDisplayed({ timeout: 5000 });
+ 
         await this.inputUsername.setValue(username);
         await this.inputPassword.setValue(password);
         await this.btnSubmit.click();
@@ -48,6 +61,11 @@ class LoginPage extends Page {
     open () {
         return super.open('login');
     }
+
+
+    
+
+
 }
 
 export default LoginPage;

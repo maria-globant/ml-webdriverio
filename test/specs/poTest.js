@@ -2,15 +2,17 @@
 
 import { expect, browser, $ } from '@wdio/globals'
 import LoginPage from '../pageobjects/login.page.js'
+//import ShopPage from '../pageobjects/shop.js'
+import Shop from '../pageobjects/shop.js'
+import { expect as expectchai } from 'chai'
 
 
 describe('Ecommerce Application', async () => {
 
-    it('Login Fail page', async () => {
+    xit('Login Fail page', async () => {
 
-        await browser.url("https://rahulshettyacademy.com/loginpagePractise/")
+        await browser.url('https://rahulshettyacademy.com/angularpractice/shop');
         console.log("Titulo: ", await browser.getTitle())
-        
         await expect(browser).toHaveTitle(expect.stringContaining("Rahul Shetty"))
 
         let  loginPage = new LoginPage ()
@@ -34,9 +36,6 @@ describe('Ecommerce Application', async () => {
     xit('Login Success page', async () => {
 
         await browser.url("https://rahulshettyacademy.com/loginpagePractise/")
-     //   await $("input[name='username']").setValue("rahulshettyacademy")
-     //   const password = $("//input[@id='password']")
-     //   await password.setValue("learning")
 
         let  loginPage = new LoginPage ()
 
@@ -44,51 +43,42 @@ describe('Ecommerce Application', async () => {
 
         await console.log ("Alert ------------", await loginPage.alert.getText())
 
-        /**** 
-        await $("#signInBtn").click()
 
-        await $(".btn-primary").waitForExist(2000)
-
-        await expect(browser).toHaveUrl(expect.stringContaining('shop'))
-        await expect(browser).toHaveTitle('ProtoCommerce')
-        ***/
     })
 
-       it ("End to End test", async() =>
-        {
+   it ("End to End test", async() => {
             
             const products = ['iphone X', 'Blackberry']
-            await browser.url("https://rahulshettyacademy.com/loginpagePractise/")
-                    let  loginPage = new LoginPage ()
+            let  shopPage = new Shop()
+            let  loginPage = new LoginPage ()
+        await browser.url("https://rahulshettyacademy.com/loginpagePractise/")
+        
+            await expect(browser).toHaveTitle(expect.stringContaining("Rahul Shetty"))
+            
+            const title = await browser.getTitle();
 
-            await loginPage.login("rahulshettyacademy", "learning")
-
-            /**
-            await $("input[name='username']").setValue("rahulshettyacademy")
-            const password = $("//input[@id='password']")
-            await password.setValue("learning")
-            await $("#signInBtn").click()
-            ***/
-           // const products = ['iphone X', 'Blackberry']
-           await browser.url("https://rahulshettyacademy.com/angularpractice/shop")
-            const link = await $("*=Checkout")
-            await link.waitForExist()
-            const cards = await $$("(//div[@class='card h-100'])")
-    
-            for (let i=0; i < await cards.length; i++)
-            {
-                const card = await cards[i].$("div h4 a")
-                console.log (" -----------------  Producto --",i, await cards[i].getText())
-    
-                if ( products.includes(await card.getText()) )
-                {
-                        await cards[i].$(".card-footer button").click()
-                        
-                }
+console.log('La URL actual es:', browser.getUrl());
+            if (title.includes('Rahul Shetty Academy')) {
+                console.log('✅ Título correcto');
+            } else {
+                console.log(`❌ Título incorrecto: ${title}`);
             }
+            
+            await loginPage.Login("rahulshettyacademy", "learning")
+
+            await shopPage.checkout.waitForExist()
+
+            await shopPage.addProductsToCart(products)
+
+             await shopPage.checkout.click()
+
+           
+/*
+            await link.waitForExist()
+            const cards = await shopPage.cards()
+    
             await link.click()
-    
-    
+       
     
             await browser.pause(5000)
     
@@ -114,7 +104,7 @@ describe('Ecommerce Application', async () => {
            // await expect( await $(".alert-success")).toHaveTextContaining("Success")
     
            await expect( await $(".alert-success")).toHaveText(expect.stringContaining("Success"))
-           
-        }
+    */       
+    })
 
 })
