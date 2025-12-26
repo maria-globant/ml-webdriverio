@@ -60,21 +60,22 @@ exports.config = {
         //browserName: 'firefox'
         //browserName: 'MicrosoftEdge'
 
-          maxInstances: 1,
-  browserName: 'chrome',
-  'goog:chromeOptions': {
-    args: [
-      '--disable-notifications',
-      '--disable-infobars',
-      '--disable-save-password-bubble'
-    ],
-    prefs: {
-      'credentials_enable_service': false,
-      'profile.password_manager_enabled': false
-    }
-  }
-
-        
+    maxInstances: 1,
+    browserName: 'chrome',
+    'goog:chromeOptions': {
+        args: [
+            '--disable-notifications',
+            '--disable-infobars',
+            '--disable-save-password-bubble',
+            '--no-default-browser-check',
+            '--disable-extensions'
+        ],
+        prefs: {
+            'credentials_enable_service': false,
+            'profile.password_manager_enabled': false,
+            'profile.default_content_setting_values.notifications': 2
+        }
+    } 
     }],
 
     //

@@ -51,20 +51,17 @@ describe('Ecommerce Application', async () => {
             const products = ['iphone X', 'Blackberry']
             let  shopPage = new Shop()
             let  loginPage = new LoginPage ()
-        await browser.url("https://rahulshettyacademy.com/loginpagePractise/")
+       // await browser.url("https://rahulshettyacademy.com/loginpagePractise/")
+        await browser.url("https://rahulshettyacademy.com/angularpractice/shop")
+
+        console.log("Titulo: ---------------------", await browser.getTitle())
         
-            await expect(browser).toHaveTitle(expect.stringContaining("Rahul Shetty"))
+          //  await expect(browser).toHaveTitle(expect.stringContaining("Rahul Shetty"))
+          await expect(browser).toHaveTitle(expect.stringContaining("ProtoCommerce"))
             
             const title = await browser.getTitle();
-
-console.log('La URL actual es:', browser.getUrl());
-            if (title.includes('Rahul Shetty Academy')) {
-                console.log('✅ Título correcto');
-            } else {
-                console.log(`❌ Título incorrecto: ${title}`);
-            }
             
-            await loginPage.Login("rahulshettyacademy", "learning")
+           //await loginPage.Login("rahulshettyacademy", "learning")
 
             await shopPage.checkout.waitForExist()
 
@@ -72,39 +69,29 @@ console.log('La URL actual es:', browser.getUrl());
 
              await shopPage.checkout.click()
 
-           
-/*
-            await link.waitForExist()
-            const cards = await shopPage.cards()
-    
-            await link.click()
-       
-    
-            await browser.pause(5000)
-    
-            const productPrices = await $$("//tr/td[4]/strong")
-    
-           const textPrice = await productPrices.map( async (text) => await (text.getText()))
-           const prices = await textPrice.map( price => parseInt(price.split(".")[1].trim())).reduce( (accum, price) => accum+price, 0)
-            console.log("product Prices Reduce ----------------",  prices)
-    
-           const totalValue = await $("h3 strong").getText()
-           const totalIntValue = parseInt(totalValue.split(".")[1].trim())
-    
-            await expectchai(prices).to.equal(totalIntValue)
-    
-            await $(".btn-success").click()   
-            await $("#country").setValue("ind")   
-            await $(".lds-ellipsis").waitForExist({reverse:true})
-    
-            await $("=India").click()
-    
-            await $("input[type = 'submit']").click()
-    
-           // await expect( await $(".alert-success")).toHaveTextContaining("Success")
-    
-           await expect( await $(".alert-success")).toHaveText(expect.stringContaining("Success"))
-    */       
+        const productPrices = await $$("//tr/td[4]/strong")
+
+       const textPrice = await productPrices.map( async (text) => await (text.getText()))
+       const prices = await textPrice.map( price => parseInt(price.split(".")[1].trim())).reduce( (accum, price) => accum+price, 0)
+        console.log("product Prices Reduce ----------------",  prices)
+
+       const totalValue = await $("h3 strong").getText()
+       const totalIntValue = parseInt(totalValue.split(".")[1].trim())
+
+        await expectchai(prices).to.equal(totalIntValue)
+
+        await $(".btn-success").click()   
+        await $("#country").setValue("ind")   
+        await $(".lds-ellipsis").waitForExist({reverse:true})
+
+        await $("=India").click()
+
+        await $("input[type = 'submit']").click()
+
+       // await expect( await $(".alert-success")).toHaveTextContaining("Success")
+
+       await expect( await $(".alert-success")).toHaveText(expect.stringContaining("Success"))
+          
     })
 
 })
