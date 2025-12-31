@@ -17,7 +17,7 @@ describe ("Ecommerce Application", async () =>
         ***/
        const products = ['iphone X', 'Blackberry']
        await browser.url("https://rahulshettyacademy.com/angularpractice/shop")
-        const link = await $("*=Checkout")
+    const link = await $("*=Checkout")
         await link.waitForExist()
         const cards = await $$("(//div[@class='card h-100'])")
 

@@ -28,7 +28,10 @@ import Page from './page.js'
 class Shop extends Page {
     
     get checkout() {
-        return $("*=Checkout")
+
+       // return $("*=Checkout")
+       // //*[@id="navbarResponsive"]/ul/li/a
+        return $(".nav-link.btn.btn-primary")
     }
 
     get cards() {
