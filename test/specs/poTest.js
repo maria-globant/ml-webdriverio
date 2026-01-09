@@ -64,26 +64,22 @@ describe('Ecommerce Application', async () => {
 
             //const checkoutBtn = $('a.nav-link.btn.btn-primary');
 
-
-            console.log("Wait For Exist: 2---------------------")
-
             //console.log(" Informacion de la pagina --------------", await driver.getPageSource());
 
            // await checkoutBtn.waitForExist({ timeout: 10000 });
 
-            console.log("Wait For Exist: 3---------------------")
             //await checkoutBtn.waitForDisplayed({ timeout: 10000 });
 
             shopPage.checkout.waitForExist
             
-
-            console.log("Wait For Exist: 4 ---------------------")
-
             await shopPage.addProductsToCart(products)
 
             await shopPage.checkout.click()
 
-        const productPrices = await $$("//tr/td[4]/strong")
+        await console.log("Hasta aca llega shopPage ---------------------")
+
+
+    const productPrices = await $$("//tr/td[4]/strong")
 
        const textPrice = await productPrices.map( async (text) => await (text.getText()))
        const prices = await textPrice.map( price => parseInt(price.split(".")[1].trim())).reduce( (accum, price) => accum+price, 0)
