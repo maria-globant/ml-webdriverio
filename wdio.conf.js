@@ -64,11 +64,12 @@ exports.config = {
     browserName: 'chrome',
     'goog:chromeOptions': {
         args: [
-            '--disable-notifications',
+            '--disable-notifications', 
             '--disable-infobars',
             '--disable-save-password-bubble',
             '--no-default-browser-check',
-            '--disable-extensions'
+            '--disable-extensions',
+            '--disable-gpu',
         ],
         prefs: {
             'credentials_enable_service': false,

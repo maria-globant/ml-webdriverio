@@ -6,6 +6,8 @@ import LoginPage from '../pageobjects/login.page.js'
 import Shop from '../pageobjects/shop.js'
 import { expect as expectchai } from 'chai'
 
+const { Builder } = require('selenium-webdriver');
+
 
 describe('Ecommerce Application', async () => {
 
@@ -51,25 +53,33 @@ describe('Ecommerce Application', async () => {
             const products = ['iphone X', 'Blackberry']
             let  shopPage = new Shop()
             let  loginPage = new LoginPage ()
-       // await browser.url("https://rahulshettyacademy.com/loginpagePractise/")
-        await browser.url("https://rahulshettyacademy.com/angularpractice/shop")
 
-        console.log("Titulo: ---------------------", await browser.getTitle())
+
+             await browser.url("https://rahulshettyacademy.com/angularpractice/shop")
+
+            console.log("Titulo: ---------------------", await browser.getTitle())
         
-          //  await expect(browser).toHaveTitle(expect.stringContaining("Rahul Shetty"))
-          await expect(browser).toHaveTitle(expect.stringContaining("ProtoCommerce"))
-            
-            const title = await browser.getTitle();
-            
-           //await loginPage.Login("rahulshettyacademy", "learning")
+            await expect(browser).toHaveTitle(expect.stringContaining("ProtoCommerce"))
+        
 
-            await shopPage.checkout.waitForExist()
+            //const checkoutBtn = $('a.nav-link.btn.btn-primary');
 
+            //console.log(" Informacion de la pagina --------------", await driver.getPageSource());
+
+           // await checkoutBtn.waitForExist({ timeout: 10000 });
+
+            //await checkoutBtn.waitForDisplayed({ timeout: 10000 });
+
+            shopPage.checkout.waitForExist
+            
             await shopPage.addProductsToCart(products)
 
-             await shopPage.checkout.click()
+            await shopPage.checkout.click()
 
-        const productPrices = await $$("//tr/td[4]/strong")
+        await console.log("Hasta aca llega shopPage ---------------------")
+
+
+    const productPrices = await $$("//tr/td[4]/strong")
 
        const textPrice = await productPrices.map( async (text) => await (text.getText()))
        const prices = await textPrice.map( price => parseInt(price.split(".")[1].trim())).reduce( (accum, price) => accum+price, 0)
@@ -91,6 +101,10 @@ describe('Ecommerce Application', async () => {
        // await expect( await $(".alert-success")).toHaveTextContaining("Success")
 
        await expect( await $(".alert-success")).toHaveText(expect.stringContaining("Success"))
+
+       //browser.close()
+       //await browser.closeWindow()
+       //await browser.deleteSession();
           
     })
 
