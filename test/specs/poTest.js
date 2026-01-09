@@ -4,6 +4,7 @@ import { expect, browser, $ } from '@wdio/globals'
 import LoginPage from '../pageobjects/login.page.js'
 //import ShopPage from '../pageobjects/shop.js'
 import Shop from '../pageobjects/shop.js'
+import ReviewPage from '../pageobjects/review.page.js'
 import { expect as expectchai } from 'chai'
 
 const { Builder } = require('selenium-webdriver');
@@ -78,11 +79,12 @@ describe('Ecommerce Application', async () => {
 
         await console.log("Hasta aca llega shopPage ---------------------")
 
+        let reviewPage = new ReviewPage()
+        let suma =   await reviewPage.sumOfProducts()
 
-    const productPrices = await $$("//tr/td[4]/strong")
+        console.log("Sum of Products ----------------", suma)
+        // await reviewPage.totalFormattedPrice()
 
-       const textPrice = await productPrices.map( async (text) => await (text.getText()))
-       const prices = await textPrice.map( price => parseInt(price.split(".")[1].trim())).reduce( (accum, price) => accum+price, 0)
         console.log("product Prices Reduce ----------------",  prices)
 
        const totalValue = await $("h3 strong").getText()
