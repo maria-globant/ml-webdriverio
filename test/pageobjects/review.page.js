@@ -15,44 +15,29 @@ class ReviewPage  extends Page {
         return $$("(//div[@class='card h-100'])")
     }
 
+    get totalValue () {
+        return $("h3 strong")
+    }
+
     async  sumOfProducts () {
-            //const productPrices = await $$("//tr/td[4]/strong")
-
-        console.log (" Product Prices length ---------------", await this.productPrices.length)
-        
+    
         const productPrices = await this.productPrices;
+        let suma =  0
+        for (let i=0; i < productPrices.length; i++) {
 
-       for (let i=0; i < productPrices.length; i++) {
-            console.log(" Precio Producto --------------", i, await productPrices[i].getText());
+            let  precio1  = await productPrices[i].getText()
+            let precio2 = precio1.split(".")[1].trim()
+            suma += parseInt(precio2)
        }
-
-
-      /*  const sumaProductos = (
-                await Promise.all(
-                    this.productPrices.map(async (productPrice) =>
-                        parseInt((await productPrice.getText()).split(".")[1].trim())
-                    )
-                )
-)           .reduce((accum, price) => accum + price, 0);
-        
-        //console.log(" Sum of products  objeto ----------------", sumaProductos)
-
-        /*
-       const textPrice = await productPrices.map( async (text) => await (text.getText()))
-       const prices = await textPrice.map( price => parseInt(price.split(".")[1].trim())).reduce( (accum, price) => accum+price, 0)
-        console.log("product Prices Reduce ----------------",  prices)
-
-
-       const totalValue = await $("h3 strong").getText()
-       const totalIntValue = parseInt(totalValue.split(".")[1].trim())
-
-       */
+    
+       return suma
     }
 
     async totalFormattedPrice () {
 
-                const prices = await textPrice.map( price => parseInt(price.split(".")[1].trim())).reduce( (accum, price) => accum+price, 0)
-                console.log("product Prices Reduce ----------------",  prices)
+        const totalValue = await this.totalValue.getText()
+        const totalIntValue = parseInt(totalValue.split(".")[1].trim())
+        return totalIntValue
 
     }
 

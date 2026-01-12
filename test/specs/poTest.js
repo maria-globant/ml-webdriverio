@@ -61,15 +61,6 @@ describe('Ecommerce Application', async () => {
             console.log("Titulo: ---------------------", await browser.getTitle())
         
             await expect(browser).toHaveTitle(expect.stringContaining("ProtoCommerce"))
-        
-
-            //const checkoutBtn = $('a.nav-link.btn.btn-primary');
-
-            //console.log(" Informacion de la pagina --------------", await driver.getPageSource());
-
-           // await checkoutBtn.waitForExist({ timeout: 10000 });
-
-            //await checkoutBtn.waitForDisplayed({ timeout: 10000 });
 
             shopPage.checkout.waitForExist
             
@@ -77,18 +68,9 @@ describe('Ecommerce Application', async () => {
 
             await shopPage.checkout.click()
 
-        await console.log("Hasta aca llega shopPage ---------------------")
-
         let reviewPage = new ReviewPage()
-        let suma =   await reviewPage.sumOfProducts()
-
-        console.log("Sum of Products ----------------", suma)
-        // await reviewPage.totalFormattedPrice()
-
-        console.log("product Prices Reduce ----------------",  prices)
-
-       const totalValue = await $("h3 strong").getText()
-       const totalIntValue = parseInt(totalValue.split(".")[1].trim())
+        let prices =   await reviewPage.sumOfProducts()
+        let totalIntValue =   await reviewPage.totalFormattedPrice()
 
         await expectchai(prices).to.equal(totalIntValue)
 
