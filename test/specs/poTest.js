@@ -4,6 +4,7 @@ import { expect, browser, $ } from '@wdio/globals'
 import LoginPage from '../pageobjects/login.page.js'
 //import ShopPage from '../pageobjects/shop.js'
 import Shop from '../pageobjects/shop.js'
+import ReviewPage from '../pageobjects/review.page.js'
 import { expect as expectchai } from 'chai'
 
 const { Builder } = require('selenium-webdriver');
@@ -60,15 +61,6 @@ describe('Ecommerce Application', async () => {
             console.log("Titulo: ---------------------", await browser.getTitle())
         
             await expect(browser).toHaveTitle(expect.stringContaining("ProtoCommerce"))
-        
-
-            //const checkoutBtn = $('a.nav-link.btn.btn-primary');
-
-            //console.log(" Informacion de la pagina --------------", await driver.getPageSource());
-
-           // await checkoutBtn.waitForExist({ timeout: 10000 });
-
-            //await checkoutBtn.waitForDisplayed({ timeout: 10000 });
 
             shopPage.checkout.waitForExist
             
@@ -76,17 +68,9 @@ describe('Ecommerce Application', async () => {
 
             await shopPage.checkout.click()
 
-        await console.log("Hasta aca llega shopPage ---------------------")
-
-
-    const productPrices = await $$("//tr/td[4]/strong")
-
-       const textPrice = await productPrices.map( async (text) => await (text.getText()))
-       const prices = await textPrice.map( price => parseInt(price.split(".")[1].trim())).reduce( (accum, price) => accum+price, 0)
-        console.log("product Prices Reduce ----------------",  prices)
-
-       const totalValue = await $("h3 strong").getText()
-       const totalIntValue = parseInt(totalValue.split(".")[1].trim())
+        let reviewPage = new ReviewPage()
+        let prices =   await reviewPage.sumOfProducts()
+        let totalIntValue =   await reviewPage.totalFormattedPrice()
 
         await expectchai(prices).to.equal(totalIntValue)
 
