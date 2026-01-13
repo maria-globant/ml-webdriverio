@@ -19,6 +19,10 @@ class ReviewPage  extends Page {
         return $("h3 strong")
     }
 
+    get purchaseButton () { 
+        return $(".btn-success")
+    }
+
     async  sumOfProducts () {
     
         const productPrices = await this.productPrices;
