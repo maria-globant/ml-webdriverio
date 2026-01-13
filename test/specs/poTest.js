@@ -5,6 +5,8 @@ import LoginPage from '../pageobjects/login.page.js'
 //import ShopPage from '../pageobjects/shop.js'
 import Shop from '../pageobjects/shop.js'
 import ReviewPage from '../pageobjects/review.page.js'
+import PurchasePage from '../pageobjects/purchase.js'
+
 import { expect as expectchai } from 'chai'
 
 const { Builder } = require('selenium-webdriver');
@@ -74,21 +76,19 @@ describe('Ecommerce Application', async () => {
 
         await expectchai(prices).to.equal(totalIntValue)
 
-        await $(".btn-success").click()   
-        await $("#country").setValue("ind")   
-        await $(".lds-ellipsis").waitForExist({reverse:true})
+        await reviewPage.purchaseButton.click()
 
-        await $("=India").click()
+        let purchasePage = new PurchasePage()
 
-        await $("input[type = 'submit']").click()
+        await purchasePage.country.setValue("ind")
 
-       // await expect( await $(".alert-success")).toHaveTextContaining("Success")
+        await purchasePage.waitingSpinner.waitForExist({reverse:true})
+ 
+        await purchasePage.selectCountryOption.click()
 
-       await expect( await $(".alert-success")).toHaveText(expect.stringContaining("Success"))
+        await purchasePage.submitButton.click()
 
-       //browser.close()
-       //await browser.closeWindow()
-       //await browser.deleteSession();
+       await expect( await purchasePage.alertSuccess).toHaveText(expect.stringContaining("Success"))
           
     })
 

@@ -28,9 +28,6 @@ import Page from './page.js'
 class Shop extends Page {
     
     get checkout() {
-
-       // return $("*=Checkout")
-       // //*[@id="navbarResponsive"]/ul/li/a
         return $(".nav-link.btn.btn-primary")
     }
 
@@ -42,7 +39,6 @@ class Shop extends Page {
                     for (let i=0; i < await this.cards.length; i++)
                     {
                         const card = await this.cards[i].$("div h4 a")
-                        console.log (" -----------------  Producto --",i, await this.cards[i].getText())
             
                         if ( products.includes(await card.getText()) )
                         {
