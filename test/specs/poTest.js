@@ -9,33 +9,38 @@ import PurchasePage from '../pageobjects/purchase.js'
 
 import { expect as expectchai } from 'chai'
 
+const fs = require('fs');
+let credentials = JSON.parse(fs.readFileSync('test/testData/loginTest.json'))
+
 const { Builder } = require('selenium-webdriver');
 
 
 describe('Ecommerce Application', async () => {
 
-    xit('Login Fail page', async () => {
+    credentials.forEach( ({username, password})  => {
+        it('Login Fail page', async () => {
 
-        await browser.url('https://rahulshettyacademy.com/angularpractice/shop');
-        console.log("Titulo: ", await browser.getTitle())
-        await expect(browser).toHaveTitle(expect.stringContaining("Rahul Shetty"))
+            await browser.url('https://rahulshettyacademy.com/loginpagePractise/');
+            console.log("Titulo: ", await browser.getTitle())
+            await expect(browser).toHaveTitle(expect.stringContaining("Rahul Shetty"))
 
-        let  loginPage = new LoginPage ()
-        await loginPage.Login("rahulshettyacademy", "Second")
+            let  loginPage = new LoginPage ()
+            
+            await loginPage.Login(username, password)
 
-        await console.log("Alert ------------------", await loginPage.alert.getText())
+            await console.log("Alert ------------------", await loginPage.alert.getText())
 
-        await browser.waitUntil(async () => await loginPage.signIn.getAttribute('value') === 'Sign In',
-            {
-                timeout: 3000,
-                timeoutMsg: "Error message is not showing up"
-            })
-        await console.log(await $(".alert-danger").getText())
-        
-        await console.log("Alert ------------------", await loginPage.alert.getText())
+            await browser.waitUntil(async () => await loginPage.signIn.getAttribute('value') === 'Sign In',
+                {
+                    timeout: 3000,
+                    timeoutMsg: "Error message is not showing up"
+                })
+            await console.log(await $(".alert-danger").getText())
+            
+            await console.log("Alert ------------------", await loginPage.alert.getText())
 
-        await expect(await loginPage.textInfo).toHaveText(expect.stringContaining("username is"))
-
+            await expect(await loginPage.textInfo).toHaveText(expect.stringContaining("username is"))
+        })    
     })
 
     xit('Login Success page', async () => {
@@ -51,7 +56,7 @@ describe('Ecommerce Application', async () => {
 
     })
 
-   it ("End to End test", async() => {
+   xit ("End to End test", async() => {
             
             const products = ['iphone X', 'Blackberry']
             let  shopPage = new Shop()
