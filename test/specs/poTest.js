@@ -25,6 +25,7 @@ describe('Ecommerce Application', async () => {
             await expect(browser).toHaveTitle(expect.stringContaining("Rahul Shetty"))
 
             let  loginPage = new LoginPage ()
+            
             await loginPage.Login(username, password)
 
             await console.log("Alert ------------------", await loginPage.alert.getText())
