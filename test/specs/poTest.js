@@ -11,6 +11,7 @@ import { expect as expectchai } from 'chai'
 
 const fs = require('fs');
 let credentials = JSON.parse(fs.readFileSync('test/testData/loginTest.json'))
+let e2ecredentials = JSON.parse(fs.readFileSync('test/testData/e2eTest.json'))
 
 const { Builder } = require('selenium-webdriver');
 
@@ -18,7 +19,7 @@ const { Builder } = require('selenium-webdriver');
 describe('Ecommerce Application', async () => {
 
     credentials.forEach( ({username, password})  => {
-        it('Login Fail page', async () => {
+        xit('Login Fail page', async () => {
 
             await browser.url('https://rahulshettyacademy.com/loginpagePractise/');
             console.log("Titulo: ", await browser.getTitle())
@@ -56,9 +57,10 @@ describe('Ecommerce Application', async () => {
 
     })
 
-   xit ("End to End test", async() => {
+    e2ecredentials.forEach( ({products})  => {
+    it ("End to End test", async() => {
             
-            const products = ['iphone X', 'Blackberry']
+            //const products = ['iphone X', 'Blackberry']
             let  shopPage = new Shop()
             let  loginPage = new LoginPage ()
 
@@ -95,6 +97,7 @@ describe('Ecommerce Application', async () => {
 
        await expect( await purchasePage.alertSuccess).toHaveText(expect.stringContaining("Success"))
           
+    })
     })
 
 })
