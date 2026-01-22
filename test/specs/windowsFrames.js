@@ -11,15 +11,11 @@ describe ('Windows and Frames Miscellanous', async() =>
         const handles = await browser.getWindowHandles()
         await browser.switchToWindow(handles[1])
        
-        console.log( "H1 ----------------------------- ",await $("h1").getText())
-        console.log("Title ---------------------------------", await browser.getTitle())
         await browser.closeWindow()
         await browser.switchToWindow(handles[0])
-        console.log("Title2  ---------------------------------", await browser.getTitle())
 
         await browser.newWindow("https://google.com")
 
-        console.log("Title3  ---------------------------------", await browser.getTitle())
         await browser.pause(3000)
 
         await browser.switchWindow("https://rahulshettyacademy.com/loginpagePractise/")

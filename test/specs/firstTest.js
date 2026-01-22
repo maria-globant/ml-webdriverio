@@ -21,14 +21,12 @@ describe('Ecommerce Application', async () => {
 
         //await loginPage.Login("rahulshettyacademy", "Second")
 
-        await console.log(await $(".alert-danger").getText())
 
         await browser.waitUntil(async () => await $("#signInBtn").getAttribute('value') === 'Sign In',
             {
                 timeout: 3000,
                 timeoutMsg: "Error message is not showing up"
             })
-        await console.log(await $(".alert-danger").getText())
 
         await expect($("p")).toHaveText(expect.stringContaining("username is"))
 
@@ -45,7 +43,6 @@ describe('Ecommerce Application', async () => {
 
         await loginPage.login("rahulshettyacademy", "learning")
 
-        await console.log ("Alert ------------", await loginPage.alert.getText())
 
         /**** 
         await $("#signInBtn").click()
