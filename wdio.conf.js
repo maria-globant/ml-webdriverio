@@ -21,13 +21,13 @@ exports.config = {
     // of the config file unless it's absolute.
     //
     specs: [
-        //'.test/specs/**/*.js'
+        './test/specs/*.js'
         //'./test/specs/firstTest.js'
         // './test/specs/uControls.js'
         //'./test/specs/functionalScenarios.js'
         //'./test/specs/windowsFrames.js'
         //'./test/specs/eCommerceE2E.js'
-        './test/specs/poTest.js'
+        //'./test/specs/poTest.js'
     ],
     // Patterns to exclude.
     exclude: [
@@ -60,7 +60,7 @@ exports.config = {
         //browserName: 'firefox'
         //browserName: 'MicrosoftEdge'
 
-    maxInstances: 1,
+    maxInstances: 5,
     browserName: 'chrome',
     'goog:chromeOptions': {
         args: [
@@ -69,6 +69,7 @@ exports.config = {
             '--disable-save-password-bubble',
             '--no-default-browser-check',
             '--disable-extensions',
+            '--headless',
             '--disable-gpu',
         ],
         prefs: {

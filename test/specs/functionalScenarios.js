@@ -40,7 +40,7 @@ describe('Functional Testing on Application', async () => {
         //console.log("Abrio el alerta: ------------------------", await browser.isAlertOpen())
         //await browser.execute('window.alert("You doble clicked. Thank you")')
         //console.log("Expect: ---------------------", await browser.isAlertOpen())
-        console.log("Get Alert Text ------------------", await browser.getAlertText())
+
 
         //console.log("Antes del get Alert --------------------------------", await browser.isAlertOpen())
         //console.log(browser.isAlertOpen()); // outputs: false
@@ -59,19 +59,14 @@ describe('Functional Testing on Application', async () => {
         const veggiesLocators = await $$("tr td:nth-child(1)")
         const OriginalveggiesName = await veggiesLocators.map(async veggie => await veggie.getText())
 
-        console.log("OriginalveggiesName ------ 1", OriginalveggiesName)
 
         const veggies = await OriginalveggiesName.slice()
         const sortedVeggies = await veggies.sort()
 
-        console.log("veggie ordenadas", sortedVeggies)
 
         expectChai(OriginalveggiesName).to.eql(sortedVeggies)
 
-/*        if (expect(veggiesName).to.equal(sortedVeggies))
-            console.log("--------------------- Ordenadas")
-        else
-            console.log("--------------------- No estan ordenadas") */
+
     })
     xit('Web Tables Filter validation', async () => {
         await browser.url("https://rahulshettyacademy.com/seleniumPractise/#/offers")
@@ -79,9 +74,7 @@ describe('Functional Testing on Application', async () => {
         const veggiesLocators = await $$("tr td:nth-child(1)")
 
         await expect(await veggiesLocators).toBeElementsArrayOfSize({eq:1})
-        console.log( "ToBeElements ArrayOfSize", await expect(await veggiesLocators).toBeElementsArrayOfSize({eq:1}))
 
-        console.log("Tomato ------------ ", await veggiesLocators[0].getText())
         await veggiesLocators[0].getText()
 
         //await exp
