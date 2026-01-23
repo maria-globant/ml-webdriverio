@@ -4,7 +4,7 @@ import { expect as expectchai } from 'chai'
 
 describe ('Windows and Frames Miscellanous', async() => 
 {
-    it('Parent and Child windows swtich', async () =>
+    xit('Parent and Child windows swtich', async () =>
     {
         await browser.url("https://rahulshettyacademy.com/loginpagePractise/")
         await $(".blinkingText").click()

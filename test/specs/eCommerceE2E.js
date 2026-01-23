@@ -5,7 +5,7 @@ import { expect as expectchai } from 'chai'
 
 describe ("Ecommerce Application", async () =>
 {
-    it ("End to End test", async() =>
+    xit ("End to End test", async() =>
     {
         /***
         const products = ['iphone X', 'Blackberry']

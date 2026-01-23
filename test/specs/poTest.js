@@ -19,7 +19,7 @@ const { Builder } = require('selenium-webdriver');
 describe('Ecommerce Application', async () => {
 
     credentials.forEach( ({username, password})  => {
-        xit('Login Fail page', async () => {
+        it('Login Fail page', async () => {
 
             await browser.url('https://rahulshettyacademy.com/loginpagePractise/');
             console.log("Titulo: ", await browser.getTitle())
@@ -27,7 +27,7 @@ describe('Ecommerce Application', async () => {
 
             let  loginPage = new LoginPage ()
             
-            await loginPage.Login(username, password)
+            await loginPage.login(username, password)
 
             await console.log("Alert ------------------", await loginPage.alert.getText())
 
@@ -44,7 +44,7 @@ describe('Ecommerce Application', async () => {
         })    
     })
 
-    xit('Login Success page', async () => {
+    it('Login Success page', async () => {
 
         await browser.url("https://rahulshettyacademy.com/loginpagePractise/")
 
@@ -52,7 +52,7 @@ describe('Ecommerce Application', async () => {
 
         await loginPage.login("rahulshettyacademy", "learning")
 
-        await console.log ("Alert ------------", await loginPage.alert.getText())
+        console.log ("Alert ------------", await loginPage.alert.getText())
 
 
     })

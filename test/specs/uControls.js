@@ -7,7 +7,7 @@ import { expect as expectchai } from 'chai'
 
 describe('UI Controls Test Suit', async () => {
 
-    xit('UI Controls', async () => {
+    it('UI Controls', async () => {
 
         // Login
         await browser.url("https://rahulshettyacademy.com/loginpagePractise/")
@@ -18,9 +18,16 @@ describe('UI Controls Test Suit', async () => {
 
         // seleccion de radio button del usuario
 
+        console.log(" ----- Before selecting radio button ----- ")
+
         const radioButtons = await $$(".customradio")
+         console.log(" ----- Before selecting radio button ----- 1")
         const userDropdowns = radioButtons[1]
+
+         console.log(" ----- Before selecting radio button ----- 2")
         await userDropdowns.$("span").click()
+
+         console.log(" ----- Before selecting radio button ----- 3")
 
         // Selecciona Cancel
         const modal = await $(".modal-body")
@@ -49,7 +56,7 @@ describe('UI Controls Test Suit', async () => {
         valor.localeCompare("stuud")
     })
 
-    xit('Dynamic Dropdown Controls', async () => {
+    it('Dynamic Dropdown Controls', async () => {
         await browser.url("https://rahulshettyacademy.com/AutomationPractice/")
         await $("#autocomplete").addValue("ind")
         await browser.pause(3000)
@@ -65,7 +72,7 @@ describe('UI Controls Test Suit', async () => {
         await browser.pause(3000)
     })
 
-    it('Checkboxes Identification', async () => {
+    xit('Checkboxes Identification', async () => {
 
         await browser.url("https://rahulshettyacademy.com/AutomationPractice/")
         const element = await $$("input[type = 'checkbox']")
