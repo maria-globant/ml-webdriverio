@@ -12,7 +12,7 @@ import { expect as expectchai } from 'chai';
 
 describe('Functional Testing on Application', async () => {
 
-    xit('Scrolling and Mouse hover', async () => {
+    it('Scrolling and Mouse hover', async () => {
         await browser.url("https://only-testing-blog.blogspot.com/2014/09/selectable.html")
 
         await $("button").doubleClick()
@@ -59,7 +59,7 @@ describe('Functional Testing on Application', async () => {
 
 
     })
-    xit('Web Tables Filter validation', async () => {
+    it('Web Tables Filter validation', async () => {
         await browser.url("https://rahulshettyacademy.com/seleniumPractise/#/offers")
         await $("#search-field").setValue("tomato")
         const veggiesLocators = await $$("tr td:nth-child(1)")

@@ -14,7 +14,7 @@ describe('UI Controls Test Suit', async () => {
         await expect(browser).toHaveTitle(expect.stringContaining("Rahul Shetty"))
         await $("input[name='username']").setValue("rahulshettyacademy")
         const password = $("//input[@id='password']")
-        await password.setValue("learning")
+        await password.setValue("Learning@830$3mK2")
 
         // seleccion de radio button del usuario
 
@@ -33,6 +33,8 @@ describe('UI Controls Test Suit', async () => {
         const modal = await $(".modal-body")
         await modal.waitForDisplayed()
         await $("#cancelBtn").click()
+
+        await browser.pause(5000)
 
         // seleccionar la opcion "Admin"
         await $$(".customradio")[0].$("span").isSelected()
@@ -72,7 +74,7 @@ describe('UI Controls Test Suit', async () => {
         await browser.pause(3000)
     })
 
-    xit('Checkboxes Identification', async () => {
+    it('Checkboxes Identification', async () => {
 
         await browser.url("https://rahulshettyacademy.com/AutomationPractice/")
         const element = await $$("input[type = 'checkbox']")

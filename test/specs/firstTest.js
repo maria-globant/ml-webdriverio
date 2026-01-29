@@ -5,7 +5,7 @@ import LoginPage from '../pageobjects/login.page.js'
 
 describe('Ecommerce Application', async () => {
 
-    xit('Login Fail page', async () => {
+    it('Login Fail page', async () => {
 
         await browser.url("https://rahulshettyacademy.com/loginpagePractise/")
         console.log("Titulo: ", await browser.getTitle())
@@ -32,7 +32,7 @@ describe('Ecommerce Application', async () => {
 
     })
 
-    xit('Login Success page', async () => {
+    it('Login Success page', async () => {
 
         await browser.url("https://rahulshettyacademy.com/loginpagePractise/")
      //   await $("input[name='username']").setValue("rahulshettyacademy")
@@ -41,17 +41,16 @@ describe('Ecommerce Application', async () => {
 
         let  loginPage = new LoginPage ()
 
-        await loginPage.login("rahulshettyacademy", "learning")
+        await loginPage.login("rahulshettyacademy", "Learning@830$3mK2")
 
-
-        /**** 
+    
         await $("#signInBtn").click()
 
         await $(".btn-primary").waitForExist(2000)
 
         await expect(browser).toHaveUrl(expect.stringContaining('shop'))
         await expect(browser).toHaveTitle('ProtoCommerce')
-        ***/
+
     })
 
 })
