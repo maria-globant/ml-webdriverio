@@ -7,25 +7,34 @@ import { expect as expectchai } from 'chai'
 
 describe('UI Controls Test Suit', async () => {
 
-    xit('UI Controls', async () => {
+    it('UI Controls', async () => {
 
         // Login
         await browser.url("https://rahulshettyacademy.com/loginpagePractise/")
         await expect(browser).toHaveTitle(expect.stringContaining("Rahul Shetty"))
         await $("input[name='username']").setValue("rahulshettyacademy")
         const password = $("//input[@id='password']")
-        await password.setValue("learning")
+        await password.setValue("Learning@830$3mK2")
 
         // seleccion de radio button del usuario
 
+        console.log(" ----- Before selecting radio button ----- ")
+
         const radioButtons = await $$(".customradio")
+         console.log(" ----- Before selecting radio button ----- 1")
         const userDropdowns = radioButtons[1]
+
+         console.log(" ----- Before selecting radio button ----- 2")
         await userDropdowns.$("span").click()
+
+         console.log(" ----- Before selecting radio button ----- 3")
 
         // Selecciona Cancel
         const modal = await $(".modal-body")
         await modal.waitForDisplayed()
         await $("#cancelBtn").click()
+
+        await browser.pause(5000)
 
         // seleccionar la opcion "Admin"
         await $$(".customradio")[0].$("span").isSelected()
@@ -49,7 +58,7 @@ describe('UI Controls Test Suit', async () => {
         valor.localeCompare("stuud")
     })
 
-    xit('Dynamic Dropdown Controls', async () => {
+    it('Dynamic Dropdown Controls', async () => {
         await browser.url("https://rahulshettyacademy.com/AutomationPractice/")
         await $("#autocomplete").addValue("ind")
         await browser.pause(3000)

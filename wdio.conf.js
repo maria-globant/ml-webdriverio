@@ -22,11 +22,11 @@ exports.config = {
     //
     specs: [
         './test/specs/*.js'
-        //'./test/specs/firstTest.js'
-        // './test/specs/uControls.js'
-        //'./test/specs/functionalScenarios.js'
-        //'./test/specs/windowsFrames.js'
-        //'./test/specs/eCommerceE2E.js'
+        //'./test/specs/firstTest.js' // ok
+        // './test/specs/uControls.js'        // revisar
+        //'./test/specs/functionalScenarios.js' // revisar
+       // './test/specs/windowsFrames.js' // ok
+       //'./test/specs/eCommerceE2E.js' // ok
         //'./test/specs/poTest.js'
     ],
     // Patterns to exclude.
@@ -69,7 +69,7 @@ exports.config = {
             '--disable-save-password-bubble',
             '--no-default-browser-check',
             '--disable-extensions',
-            '--headless',
+         //   '--headless', // sin interfaz grafica
             '--disable-gpu',
         ],
         prefs: {

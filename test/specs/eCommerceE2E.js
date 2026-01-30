@@ -7,16 +7,15 @@ describe ("Ecommerce Application", async () =>
 {
     it ("End to End test", async() =>
     {
-        /***
+
         const products = ['iphone X', 'Blackberry']
         await browser.url("https://rahulshettyacademy.com/loginpagePractise/")
         await $("input[name='username']").setValue("rahulshettyacademy")
         const password = $("//input[@id='password']")
-        await password.setValue("learning")
+        await password.setValue("Learning@830$3mK2")
         await $("#signInBtn").click()
-        ***/
-       const products = ['iphone X', 'Blackberry']
-       await browser.url("https://rahulshettyacademy.com/angularpractice/shop")
+
+
     const link = await $("*=Checkout")
         await link.waitForExist()
         const cards = await $$("(//div[@class='card h-100'])")
