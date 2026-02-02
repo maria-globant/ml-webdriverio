@@ -20,6 +20,10 @@ exports.config = {
     // The path of the spec files will be resolved relative from the directory of
     // of the config file unless it's absolute.
     //
+    suites: {
+        commerce: ['./test/specs/eCommerceE2E.js', './test/specs/poTest.js'],
+        userlogin: ['./test/specs/firstTest.js']
+    },
     specs: [
         './test/specs/*.js'
        //'./test/specs/firstTest.js' // ok
