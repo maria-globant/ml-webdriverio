@@ -1,69 +1,51 @@
 import { expect as expectchai } from 'chai'
 
+import LoginPage from '../pageobjects/login.page.js'
+import Shop from '../pageobjects/shop.js'
+import ReviewPage from '../pageobjects/review.page.js'
+import PurchasePage from '../pageobjects/purchase.js'
+
+
 // comando para correr:: npx wdio run wdio.conf.js 
 
 
 describe ("Ecommerce Application", async () =>
 {
-    it ("End to End test", async() =>
+    it ("End to End test - Prueba", async() =>
     {
-
         const products = ['iphone X', 'Blackberry']
-        await browser.url("https://rahulshettyacademy.com/loginpagePractise/")
-        await $("input[name='username']").setValue("rahulshettyacademy")
-        const password = $("//input[@id='password']")
-        await password.setValue("Learning@830$3mK2")
-        await $("#signInBtn").click()
+
+        let  loginPage = new LoginPage ()
+        let shop = new Shop()
+        let reviewPage = new ReviewPage()
+        let purchasePage = new PurchasePage()
+    
+
+        await browser.url("/loginpagePractise/")
+
+        await loginPage.login("rahulshettyacademy", "Learning@830$3mK2")
+        await loginPage.signIn.click()
+    
+        await shop.checkout.waitForExist()
+        await shop.addProductsToCart (products)
+        await shop.checkout.click()
 
 
-    const link = await $("*=Checkout")
-        await link.waitForExist()
-        const cards = await $$("(//div[@class='card h-100'])")
+        await reviewPage.purchaseButton.waitForExist()
+        let sumOfProducts = await reviewPage.sumOfProducts()
+        let totalFormattedPrice = await reviewPage.totalFormattedPrice()
 
-        for (let i=0; i < await cards.length; i++)
-        {
-            const card = await cards[i].$("div h4 a")
-            console.log (" -----------------  Producto --",i, await cards[i].getText())
+        expectchai (sumOfProducts).to.equal (totalFormattedPrice)
 
-            if ( products.includes(await card.getText()) )
-            {
-                    await cards[i].$(".card-footer button").click()
-                    
-            }
-        }
-        await link.click()
+        
+        await reviewPage.purchaseButton.click()
+        await purchasePage.country.setValue("ind")
+        await purchasePage.waitingSpinner.waitForExist({reverse:true})
+        await purchasePage.selectCountryOption.click()
+        await purchasePage.submitButton.click()
+        await expect( purchasePage .alertSuccess).toHaveText(expect.stringContaining("Success"))
+    
+      
+    })
 
-
-
-        await browser.pause(5000)
-
-        const productPrices = await $$("//tr/td[4]/strong")
-
-       const textPrice = await productPrices.map( async (text) => await (text.getText()))
-       const prices = await textPrice.map( price => parseInt(price.split(".")[1].trim())).reduce( (accum, price) => accum+price, 0)
-        console.log("product Prices Reduce ----------------",  prices)
-
-       const totalValue = await $("h3 strong").getText()
-       const totalIntValue = parseInt(totalValue.split(".")[1].trim())
-
-        await expectchai(prices).to.equal(totalIntValue)
-
-        await $(".btn-success").click()   
-        await $("#country").setValue("ind")   
-        await $(".lds-ellipsis").waitForExist({reverse:true})
-
-        await $("=India").click()
-
-        await $("input[type = 'submit']").click()
-
-       // await expect( await $(".alert-success")).toHaveTextContaining("Success")
-
-       await expect( await $(".alert-success")).toHaveText(expect.stringContaining("Success"))
-       
-    }
-
-    )
-
-}
-
-)
+})

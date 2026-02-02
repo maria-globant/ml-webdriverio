@@ -44,7 +44,7 @@ describe('Ecommerce Application', async () => {
         })    
     })
 
-    it('Login Success page', async () => {
+    it('LLogin Success page', async () => {
 
         await browser.url("https://rahulshettyacademy.com/loginpagePractise/")
 
