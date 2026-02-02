@@ -22,7 +22,7 @@ exports.config = {
     //
     specs: [
         './test/specs/*.js'
-        //'./test/specs/firstTest.js' // ok
+       //'./test/specs/firstTest.js' // ok
         // './test/specs/uControls.js'        // revisar
         //'./test/specs/functionalScenarios.js' // revisar
        // './test/specs/windowsFrames.js' // ok
@@ -111,7 +111,9 @@ exports.config = {
     // with `/`, the base url gets prepended, not including the path portion of your baseUrl.
     // If your `url` parameter starts without a scheme or `/` (like `some/path`), the base url
     // gets prepended directly.
-    // baseUrl: 'http://localhost:8080',
+    //baseUrl: 'http://localhost:8080',
+    baseUrl: 'https://rahulshettyacademy.com/',
+    
     //
     // Default timeout for all waitFor* commands.
     waitforTimeout: 10000,

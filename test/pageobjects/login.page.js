@@ -39,13 +39,6 @@ class LoginPage extends Page {
      * e.g. to login using username and password
      */
     async login (username, password) {
-       // await this.inputUsername.waitForDisplayed({ timeout: 5000 });
-
-       const currentUrl = await browser.getUrl();
-console.log('La URL actual es:', currentUrl);
-
-       console.log("username ------------------", username)
-        console.log("password ------------------", password)
 
         await this.inputUsername.waitForExist({ timeout: 5000 });
         await this.inputUsername.waitForDisplayed({ timeout: 5000 });

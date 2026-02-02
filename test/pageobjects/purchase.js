@@ -27,18 +27,7 @@ class PurchasePage  extends Page {
     get alertSuccess() {    
         return $(".alert-success")
     }           
-//    async  setValue (countryName) {
 
-      //      await $("#country").setValue("ind")   
-      //      await $(".lds-ellipsis").waitForExist({reverse:true})
-    /*
-            await $("=India").click()
-    
-            await $("input[type = 'submit']").click()
-    
-           // await expect( await $(".alert-success")).toHaveTextContaining("Success")
-    
-           await expect( await $(".alert-success")).toHaveText(expect.stringContaining("Success")) */
     
 }
 
