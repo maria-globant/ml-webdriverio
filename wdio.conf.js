@@ -32,10 +32,13 @@ exports.config = {
        // './test/specs/windowsFrames.js' // ok
        //'./test/specs/eCommerceE2E.js' // ok
         //'./test/specs/poTest.js'
+        // solo para correr uno de los archivos:
+        // npx wdio run wdio.conf.js --spec './test/specs/eCommerceE2E.js' 
     ],
     // Patterns to exclude.
     exclude: [
         // 'path/to/excluded/files'
+        './test/specs/eCommerceE2E.js' // lo excluyo para correr
     ],
     //
     // ============
