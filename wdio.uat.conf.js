@@ -1,35 +1,13 @@
-const { config } = require('./wdio.conf');
+//merge parent conf object + add new changes in uat conf (baseurl, connectiontimeout)
 
-exports.config = {
-    ...config,
-    //
-    // ====================
-    // Runner Configuration
-    // ====================
-    // You can overwrite any property from wdio.conf.js here for UAT environment
-    //
-    specs: [
-        './test/specs/**/*.js'
-    ],
-    //
-    // ==================
-    // Specify Test Files
-    // ==================
-    // Patterns to exclude.
-    exclude: [
-        // 'path/to/excluded/files'
-    ],
-    //
-    // ============
-    // Capabilities
-    // ============
-    maxInstances: 5,
-    //
-    // ===================
-    // Test Configurations
-    // ===================
-    baseUrl: 'https://uat.your-app-url.com',
-    //
-    // Add or override any other config specific to UAT below
-    //
-};
+const merge = require('deepmerge');
+const wdioConf = require('./wdio.conf.js');
+
+exports.config = merge(wdioConf.config, {
+
+    baseUrl: 'https://rahulshettyacademyUAT.com/',
+    waitforTimeout: 50000,
+
+})
+
+console.log('FINAL BASE URL: -----------------', exports.config.baseUrl)
