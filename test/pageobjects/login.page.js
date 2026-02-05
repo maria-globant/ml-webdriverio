@@ -40,8 +40,8 @@ class LoginPage extends Page {
      */
     async login (username, password) {
 
-        await this.inputUsername.waitForExist({ timeout: 5000 });
-        await this.inputUsername.waitForDisplayed({ timeout: 5000 });
+        await this.inputUsername.waitForExist({ timeout: 2000 });
+        await this.inputUsername.waitForDisplayed({ timeout: 2000 });
  
         await this.inputUsername.setValue(username);
         await this.inputPassword.setValue(password);
