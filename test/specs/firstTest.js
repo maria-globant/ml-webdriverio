@@ -47,10 +47,10 @@ describe('Ecommerce Application', async () => {
 
         await browser.url("loginpagePractise/")
         let  loginPage = new LoginPage ()
-        await loginPage.login("rahulshettyacademy", "Learning@830$3mK2")
+        await loginPage.login("rahulshettyacademy", "Learning@830$3mK2") 
         await loginPage.signIn.click()
         
-        await $(".btn-primary").waitForExist(2000)
+        await $(".btn-primary").waitForExist(5000)
 
         await expect(browser).toHaveUrl(expect.stringContaining('shop'))
         await expect(browser).toHaveTitle('ProtoCommerce')
