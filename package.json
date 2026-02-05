@@ -16,5 +16,9 @@
     "expect-webdriverio": "^5.1.0",
     "mocha": "^11.1.0",
     "selenium-webdriver": "^4.39.0"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "loginTest": "npx wdio run wdio.conf.js --spec ./test/specs/firstTest.js" 
   }
 }
