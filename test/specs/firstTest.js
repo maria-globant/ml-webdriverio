@@ -7,6 +7,21 @@ import LoginPage from '../pageobjects/login.page.js'
 
 describe('Ecommerce Application', async () => {
 
+    xit('Login Fail page title Smoke', async function () {
+
+
+        const loginPage = new LoginPage ()
+
+        this.retries(2)  // reintenta 2 veces este test si falla
+
+        await browser.url("/loginpagePractise/")
+        console.log("Titulo: ", await browser.getTitle())
+
+        await expect(browser).toHaveTitle(expect.stringContaining("Rahul Shetty Academy"))
+
+    })
+
+
     it('Login Fail page', async () => {
 
         const loginPage = new LoginPage ()
@@ -15,14 +30,6 @@ describe('Ecommerce Application', async () => {
         console.log("Titulo: ", await browser.getTitle())
 
         await expect(browser).toHaveTitle(expect.stringContaining("Rahul Shetty"))
-
-        //await browser.pause(2000)
-        //await $("input[name='username']").setValue("Second")
-        //const password = $("//input[@id='password']")
-        //await password.setValue("learning")
-        //await $("#signInBtn").click()
-        //await browser.pause(2000)
-
         await loginPage.login("rahulshettyacademy", "Second")
 
 
@@ -36,21 +43,13 @@ describe('Ecommerce Application', async () => {
 
     })
 
-    it('Login Success page', async () => {
+    it('Login Success page Laura', async () => {
 
         await browser.url("loginpagePractise/")
-     //   await $("input[name='username']").setValue("rahulshettyacademy")
-     //   const password = $("//input[@id='password']")
-     //   await password.setValue("learning")
-
         let  loginPage = new LoginPage ()
-
         await loginPage.login("rahulshettyacademy", "Learning@830$3mK2")
-
         await loginPage.signIn.click()
         
-       // await $("#signInBtn").click()
-
         await $(".btn-primary").waitForExist(2000)
 
         await expect(browser).toHaveUrl(expect.stringContaining('shop'))
