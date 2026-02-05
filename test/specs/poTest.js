@@ -21,7 +21,7 @@ describe('Ecommerce Application', async () => {
     credentials.forEach( ({username, password})  => {
         it('Login Fail page', async () => {
 
-            await browser.url('https://rahulshettyacademy.com/loginpagePractise/');
+            await browser.url('/loginpagePractise/');
             console.log("Titulo: ", await browser.getTitle())
             await expect(browser).toHaveTitle(expect.stringContaining("Rahul Shetty"))
 
@@ -44,9 +44,9 @@ describe('Ecommerce Application', async () => {
         })    
     })
 
-    it('LLogin Success page', async () => {
+    it('Login Success page', async () => {
 
-        await browser.url("https://rahulshettyacademy.com/loginpagePractise/")
+        await browser.url("/loginpagePractise/")
 
         let  loginPage = new LoginPage ()
 
@@ -65,7 +65,7 @@ describe('Ecommerce Application', async () => {
             let  loginPage = new LoginPage ()
 
 
-             await browser.url("https://rahulshettyacademy.com/angularpractice/shop")
+             await browser.url("/angularpractice/shop")
 
             console.log("Titulo: ---------------------", await browser.getTitle())
         

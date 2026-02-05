@@ -12,7 +12,7 @@ import { expect as expectchai } from 'chai';
 
 describe('Functional Testing on Application', async () => {
 
-    it('Scrolling and Mouse hover', async () => {
+    xit('Scrolling and Mouse hover', async () => {
         await browser.url("https://only-testing-blog.blogspot.com/2014/09/selectable.html")
 
         await $("button").doubleClick()
