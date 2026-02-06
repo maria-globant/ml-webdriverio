@@ -161,7 +161,19 @@ exports.config = {
     // Test reporter for stdout.
     // The only one supported by default is 'dot'
     // see also: https://webdriver.io/docs/dot-reporter
-    reporters: ['spec'],
+
+    // ...
+    reporters: [['allure', {
+        outputDir: 'allure-results',
+        //disableWebdriverStepsReporting: true,
+        disableWebdriverScreenshotsReporting: false,
+        //addConsoleLogs: true, // Attach console logs to reports
+        //reportedEnvironmentVars: {
+        //    'NODE_VERSION': process.version,
+        //    'BROWSER': 'chrome'
+        //}
+    }]],
+    // ...
 
     // Options to be passed to Mocha.
     // See the full list at http://mochajs.org/
@@ -272,8 +284,13 @@ exports.config = {
      * Hook that gets executed after the suite has ended
      * @param {object} suite suite details
      */
-    // afterSuite: function (suite) {
-    // },
+     //afterSuite: function (suite) {
+     //},
+    afterTest: async function(test, context, { error, result, duration, passed, retries }) {
+        if (error) {
+            await browser.takeScreenshot();
+        }
+    }
     /**
      * Runs after a WebdriverIO command gets executed
      * @param {string} commandName hook command name
