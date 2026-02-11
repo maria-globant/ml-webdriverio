@@ -22,23 +22,25 @@ describe('Ecommerce Application', async () => {
         it('Login Fail page', async () => {
 
             await browser.url('/loginpagePractise/');
-            console.log("Titulo: ", await browser.getTitle())
+            
             await expect(browser).toHaveTitle(expect.stringContaining("Rahul Shetty"))
 
             let  loginPage = new LoginPage ()
             
             await loginPage.login(username, password)
 
-            //await console.log("Alert ------------------", await loginPage.alert.getText())
+           
 
             await browser.waitUntil(async () => await loginPage.signIn.getAttribute('value') === 'Sign In',
                 {
                     timeout: 3000,
                     timeoutMsg: "Error message is not showing up"
                 })
-            await console.log(await $(".alert-danger").getText())
+            //await console.log(await $(".alert-danger").getText())
+
+            await $(".alert-danger").getText()
             
-            //await console.log("Alert ------------------", await loginPage.alert.getText())
+
 
             await expect(await loginPage.textInfo).toHaveText(expect.stringContaining("username is"))
         })    
@@ -66,8 +68,6 @@ describe('Ecommerce Application', async () => {
 
 
              await browser.url("/angularpractice/shop")
-
-            console.log("Titulo: ---------------------", await browser.getTitle())
         
             await expect(browser).toHaveTitle(expect.stringContaining("ProtoCommerce"))
 

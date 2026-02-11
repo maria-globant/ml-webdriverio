@@ -10,7 +10,7 @@ describe('UI Controls Test Suit', async () => {
     it('UI Controls', async () => {
 
         // Login
-        await browser.url("https://rahulshettyacademy.com/loginpagePractise/")
+        await browser.url("/loginpagePractise/")
         await expect(browser).toHaveTitle(expect.stringContaining("Rahul Shetty"))
         await $("input[name='username']").setValue("rahulshettyacademy")
         const password = $("//input[@id='password']")
@@ -18,8 +18,8 @@ describe('UI Controls Test Suit', async () => {
 
         // seleccion de radio button del usuario
 
-           const radioButtons = await $$(".customradio")
-          const userDropdowns = radioButtons[1]
+        const radioButtons = await $$(".customradio")
+        const userDropdowns = radioButtons[1]
         await userDropdowns.$("span").click()
 
         // Selecciona Cancel
@@ -29,10 +29,8 @@ describe('UI Controls Test Suit', async () => {
 
         await browser.pause(5000)
 
-        // seleccionar la opcion "Admin"
         await $$(".customradio")[0].$("span").isSelected()
 
-        // selecciona opcion ok pop up
         await userDropdowns.$("span").click()
         await modal.waitForDisplayed()
         await $("#okayBtn").click()
@@ -52,9 +50,8 @@ describe('UI Controls Test Suit', async () => {
     })
 
     it('Dynamic Dropdown Controls', async () => {
-        await browser.url("https://rahulshettyacademy.com/AutomationPractice/")
+        await browser.url("/AutomationPractice/")
         await $("#autocomplete").addValue("ind")
-        await browser.pause(3000)
 
         let items = await $$("[class='ui-menu-item'] div")
 
@@ -64,17 +61,16 @@ describe('UI Controls Test Suit', async () => {
                 await items[i].click()
             }
         }
-        await browser.pause(3000)
     })
 
     it('Checkboxes Identification', async () => {
 
-        await browser.url("https://rahulshettyacademy.com/AutomationPractice/")
+        await browser.url("/AutomationPractice/")
         const element = await $$("input[type = 'checkbox']")
 
-        // console.log(await element[1].isSelected())
+        await element[1].isSelected()
 
-        await element[1].click()
+        //console.log("Screenshot: ", await element[1].click())
 
         await browser.saveScreenshot("paginaAAAAA.png")
 

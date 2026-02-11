@@ -21,6 +21,8 @@
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "loginTest": "npx wdio run wdio.conf.js --spec ./test/specs/firstTest.js"
+    "all": "npx wdio run wdio.conf.js",
+    "loginTest": "npx wdio run wdio.conf.js --spec ./test/specs/firstTest.js",
+    "generateReport": "allure generate allure-results --clean allure-report && allure open"
   }
 }

@@ -22,9 +22,16 @@ describe("Ecommerce Application", async () => {
         await browser.url("/loginpagePractise/")
 
         await loginPage.login("rahulshettyacademy", "Learning@830$3mK2")
-        await loginPage.signIn.click()
 
-        await shop.checkout.waitForExist()
+        await shop.waitNewPage()    
+
+         await shop.title.getText()
+
+        await shop.title.waitForDisplayed({timeout: 5000 })
+
+        expectchai(await shop.title.getText()).to.equal("ProtoCommerce")
+        
+        await shop.checkout.waitForExist();
         await shop.addProductsToCart(products)
         await shop.checkout.click()
 
