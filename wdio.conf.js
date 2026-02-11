@@ -77,7 +77,7 @@ exports.config = {
                 '--disable-save-password-bubble',
                 '--no-default-browser-check',
                 '--disable-extensions',
-                //   '--headless=new', // sin interfaz grafica
+                '--headless=new', // sin interfaz grafica
                 '--disable-gpu',
                 '--window-size=1920,1080',
                 '--disable-notifications'
