@@ -26,11 +26,11 @@ exports.config = {
     },
     specs: [
         './test/specs/*.js'
-       //'./test/specs/firstTest.js' // ok
+        //'./test/specs/firstTest.js' // ok
         // './test/specs/uControls.js'        // revisar
         //'./test/specs/functionalScenarios.js' // revisar
-       // './test/specs/windowsFrames.js' // ok
-       //'./test/specs/eCommerceE2E.js' // ok
+        // './test/specs/windowsFrames.js' // ok
+        //'./test/specs/eCommerceE2E.js' // ok
         //'./test/specs/poTest.js'
         // solo para correr uno de los archivos:
         // npx wdio run wdio.conf.js --spec './test/specs/eCommerceE2E.js' 
@@ -38,7 +38,7 @@ exports.config = {
     // Patterns to exclude.
     exclude: [
         // 'path/to/excluded/files'
-        './test/specs/eCommerceE2E.js' // lo excluyo para correr
+        //'./test/specs/eCommerceE2E.js' // lo excluyo para correr
     ],
     //
     // ============
@@ -56,7 +56,7 @@ exports.config = {
     // and 30 processes will get spawned. The property handles how many capabilities
     // from the same test should run tests.
     //
-    maxInstances: 10,
+    maxInstances: 2,
     //
     // If you have trouble getting all important capabilities together, check out the
     // Sauce Labs platform configurator - a great tool to configure your capabilities:
@@ -67,24 +67,27 @@ exports.config = {
         //browserName: 'firefox'
         //browserName: 'MicrosoftEdge'
 
-    maxInstances: 5,
-    browserName: 'chrome',
-    'goog:chromeOptions': {
-        args: [
-            '--disable-notifications', 
-            '--disable-infobars',
-            '--disable-save-password-bubble',
-            '--no-default-browser-check',
-            '--disable-extensions',
-         //   '--headless', // sin interfaz grafica
-            '--disable-gpu',
-        ],
-        prefs: {
-            'credentials_enable_service': false,
-            'profile.password_manager_enabled': false,
-            'profile.default_content_setting_values.notifications': 2
+        maxInstances: 5,
+        browserName: 'chrome',
+
+        'goog:chromeOptions': {
+            args: [
+                '--disable-notifications',
+                '--disable-infobars',
+                '--disable-save-password-bubble',
+                '--no-default-browser-check',
+                '--disable-extensions',
+                //   '--headless=new', // sin interfaz grafica
+                '--disable-gpu',
+                '--window-size=1920,1080',
+                '--disable-notifications'
+            ],
+            prefs: {
+                'credentials_enable_service': false,
+                'profile.password_manager_enabled': false,
+                'profile.default_content_setting_values.notifications': 2
+            }
         }
-    } 
     }],
 
     //
@@ -94,7 +97,7 @@ exports.config = {
     // Define all options that are relevant for the WebdriverIO instance here
     //
     // Level of logging verbosity: trace | debug | info | warn | error | silent
-    logLevel: 'warn',
+    logLevel: 'error',
     //
     // Set specific log levels per logger
     // loggers:
@@ -120,7 +123,7 @@ exports.config = {
     // gets prepended directly.
     //baseUrl: 'http://localhost:8080',
     baseUrl: 'https://rahulshettyacademy.com/',
-    
+
     //
     // Default timeout for all waitFor* commands.
     waitforTimeout: 10000,
@@ -284,9 +287,9 @@ exports.config = {
      * Hook that gets executed after the suite has ended
      * @param {object} suite suite details
      */
-     //afterSuite: function (suite) {
-     //},
-    afterTest: async function(test, context, { error, result, duration, passed, retries }) {
+    //afterSuite: function (suite) {
+    //},
+    afterTest: async function (test, context, { error, result, duration, passed, retries }) {
         if (error) {
             await browser.takeScreenshot();
         }

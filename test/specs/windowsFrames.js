@@ -6,7 +6,7 @@ describe ('Windows and Frames Miscellanous', async() =>
 {
     it('Parent and Child windows swtich', async () =>
     {
-        await browser.url("https://rahulshettyacademy.com/loginpagePractise/")
+        await browser.url("/loginpagePractise/")
         await $(".blinkingText").click()
         const handles = await browser.getWindowHandles()
         await browser.switchToWindow(handles[1])
@@ -17,7 +17,7 @@ describe ('Windows and Frames Miscellanous', async() =>
         await browser.newWindow("https://google.com")
 
 
-        await browser.switchWindow("https://rahulshettyacademy.com/loginpagePractise/")
+        await browser.switchWindow("/loginpagePractise/")
         await $("#username").setValue("helloSwitchback")
 
     }   

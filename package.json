@@ -8,6 +8,7 @@
     "@wdio/local-runner": "^9.10.1",
     "@wdio/mocha-framework": "^9.10.1",
     "@wdio/spec-reporter": "^9.10.1",
+    "allure-commandline": "^2.36.0",
     "chai-dom": "^1.12.1",
     "deepmerge": "^4.3.1"
   },
@@ -20,6 +21,8 @@
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "loginTest": "npx wdio run wdio.conf.js --spec ./test/specs/firstTest.js"
+    "all": "npx wdio run wdio.conf.js",
+    "loginTest": "npx wdio run wdio.conf.js --spec ./test/specs/firstTest.js",
+    "generateReport": "allure generate allure-results --clean allure-report && allure open"
   }
 }

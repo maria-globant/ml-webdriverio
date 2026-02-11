@@ -17,36 +17,29 @@ describe('Functional Testing on Application', async () => {
 
         await $("button").doubleClick()
 
-        //////////////////
-
         await browser.isAlertOpen()
         await browser.pause(5000)
-        console.log("Abrio el alerta: ------------------------ 1")
 
-        console.log("Abrio el alerta: ------------------------ 2")
         expectchai(await browser.isAlertOpen()).to.be.true
-                console.log("Abrio el alerta: ------------------------ 3")
                 
         expect(browser().getAlertText()).to.equal('You doble clicked. Thank you..')
+        await browser.isAlertOpen()
 
-        console.log("Abrio el alerta: ------------------------ 2", await browser.isAlertOpen())
+
         await browser.execute('window.alert("You doble clicked. Thank you")')
-        console.log("Expect: ---------------------", await browser.isAlertOpen())
 
-
-        console.log("Antes del get Alert --------------------------------", await browser.isAlertOpen())
-        console.log(browser.isAlertOpen()); // outputs: false
-        console.log("Alert ----------------------- ", await browser.execute('window.alert()'))
+        await browser.execute('window.alert()')
         browser.pause(3000)
-        console.log("Antes del get Alert --------------------------------", await browser.isAlertOpen())
-        console.log("EXPECT -----------------------", expect(await browser.isAlertOpen()).to.be.true)
+
+        await browser.isAlertOpen()
+
+        expect(await browser.isAlertOpen()).to.be.true
         await expect(msg).to.equal('You doble clicked. Thank you')
-        console.log("Expect ------------------", await expect(msg).to.equal('You doble clicked. Thank you..'))
     })
+
     it('Web Tables validation', async () => {
         await browser.url("https://rahulshettyacademy.com/seleniumPractise/#/offers")
-        // tr th:nth-child(1)
-        //await $("tr th:nth-child(1)").click()
+
 
         const veggiesLocators = await $$("tr td:nth-child(1)")
         const OriginalveggiesName = await veggiesLocators.map(async veggie => await veggie.getText())
@@ -67,8 +60,6 @@ describe('Functional Testing on Application', async () => {
         await expect(await veggiesLocators).toBeElementsArrayOfSize({eq:1})
 
         await veggiesLocators[0].getText()
-
-        //await exp
 
     })
 
