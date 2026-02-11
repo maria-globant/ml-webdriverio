@@ -25,7 +25,7 @@ exports.config = {
         userlogin: ['./test/specs/firstTest.js']
     },
     specs: [
-        './test/specs/*.js'
+       './test/specs/*.js'
        //'./test/specs/firstTest.js' // ok
         // './test/specs/uControls.js'        // revisar
         //'./test/specs/functionalScenarios.js' // revisar
@@ -38,7 +38,7 @@ exports.config = {
     // Patterns to exclude.
     exclude: [
         // 'path/to/excluded/files'
-        './test/specs/eCommerceE2E.js' // lo excluyo para correr
+        //'./test/specs/eCommerceE2E.js' // lo excluyo para correr
     ],
     //
     // ============

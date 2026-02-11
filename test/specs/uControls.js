@@ -18,16 +18,9 @@ describe('UI Controls Test Suit', async () => {
 
         // seleccion de radio button del usuario
 
-        console.log(" ----- Before selecting radio button ----- ")
-
-        const radioButtons = await $$(".customradio")
-         console.log(" ----- Before selecting radio button ----- 1")
-        const userDropdowns = radioButtons[1]
-
-         console.log(" ----- Before selecting radio button ----- 2")
+           const radioButtons = await $$(".customradio")
+          const userDropdowns = radioButtons[1]
         await userDropdowns.$("span").click()
-
-         console.log(" ----- Before selecting radio button ----- 3")
 
         // Selecciona Cancel
         const modal = await $(".modal-body")

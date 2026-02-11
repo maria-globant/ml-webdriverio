@@ -29,7 +29,7 @@ describe('Ecommerce Application', async () => {
             
             await loginPage.login(username, password)
 
-            await console.log("Alert ------------------", await loginPage.alert.getText())
+            //await console.log("Alert ------------------", await loginPage.alert.getText())
 
             await browser.waitUntil(async () => await loginPage.signIn.getAttribute('value') === 'Sign In',
                 {
@@ -38,7 +38,7 @@ describe('Ecommerce Application', async () => {
                 })
             await console.log(await $(".alert-danger").getText())
             
-            await console.log("Alert ------------------", await loginPage.alert.getText())
+            //await console.log("Alert ------------------", await loginPage.alert.getText())
 
             await expect(await loginPage.textInfo).toHaveText(expect.stringContaining("username is"))
         })    
@@ -52,7 +52,7 @@ describe('Ecommerce Application', async () => {
 
         await loginPage.login("rahulshettyacademy", "learning")
 
-        console.log ("Alert ------------", await loginPage.alert.getText())
+        //console.log ("Alert ------------", await loginPage.alert.getText())
 
 
     })

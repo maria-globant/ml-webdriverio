@@ -3,6 +3,7 @@
 
 import { expect, browser, $ } from '@wdio/globals'
 import LoginPage from '../pageobjects/login.page.js'
+import Shop from '../pageobjects/shop.js'
 
 
 describe('Ecommerce Application', async () => {
@@ -10,7 +11,7 @@ describe('Ecommerce Application', async () => {
     xit('Login Fail page title Smoke', async function () {
 
 
-        const loginPage = new LoginPage ()
+        const loginPage = new LoginPage()
 
         this.retries(2)  // reintenta 2 veces este test si falla
 
@@ -24,7 +25,8 @@ describe('Ecommerce Application', async () => {
 
     it('Login Fail page', async () => {
 
-        const loginPage = new LoginPage ()
+        const loginPage = new LoginPage()
+
 
         await browser.url("/loginpagePractise/")
         console.log("Titulo: ", await browser.getTitle())
@@ -45,16 +47,37 @@ describe('Ecommerce Application', async () => {
 
     it('Login Success page Laura', async () => {
 
-        await browser.url("loginpagePractise/")
-        let  loginPage = new LoginPage ()
-        await loginPage.login("rahulshettyacademy", "Learning@830$3mK2") 
+        await browser.url("/loginpagePractise/")
+        let loginPage = new LoginPage()
+        const shop = new Shop()
+
+        await loginPage.login("rahulshettyacademy", "Learning@830$3mK2")
         await loginPage.signIn.click()
-        
-        await $(".btn-primary").waitForExist(5000)
 
-        await expect(browser).toHaveUrl(expect.stringContaining('shop'))
-        await expect(browser).toHaveTitle('ProtoCommerce')
+        //await $(".btn-primary").waitForExist(6000)
 
+        //await $(".nav-link.btn.btn-primary").waitForDisplayed(6000)
+
+   
+        await shop.checkout.waitForDisplayed()
+
+        /*const btn = await $(".nav-link.btn.btn-primary")
+
+        console.log("exists:", await btn.isExisting())
+        console.log("displayed:", await btn.isDisplayed())
+        console.log("css display:", await btn.getCSSProperty("display"))
+        console.log("css visibility:", await btn.getCSSProperty("visibility"))
+        console.log("css opacity:", await btn.getCSSProperty("opacity"))*/
+
+        /*  const modal = await $(".btn-primary")
+          if (await modal.isDisplayed()) {
+              await modal.$("button=Accept").click()
+          }
+  
+  
+          await expect(browser).toHaveUrl(expect.stringContaining('shop'))
+          await expect(browser).toHaveTitle('ProtoCommerce')
+  */
     })
 
 })

@@ -21,27 +21,27 @@ describe('Functional Testing on Application', async () => {
 
         await browser.isAlertOpen()
         await browser.pause(5000)
-        console.log("Abrio el alerta: ------------------------ 1")
+        //console.log("Abrio el alerta: ------------------------ 1")
 
-        console.log("Abrio el alerta: ------------------------ 2")
+        //console.log("Abrio el alerta: ------------------------ 2")
         expectchai(await browser.isAlertOpen()).to.be.true
-                console.log("Abrio el alerta: ------------------------ 3")
+         //       console.log("Abrio el alerta: ------------------------ 3")
                 
         expect(browser().getAlertText()).to.equal('You doble clicked. Thank you..')
 
-        console.log("Abrio el alerta: ------------------------ 2", await browser.isAlertOpen())
+        //console.log("Abrio el alerta: ------------------------ 2", await browser.isAlertOpen())
         await browser.execute('window.alert("You doble clicked. Thank you")')
-        console.log("Expect: ---------------------", await browser.isAlertOpen())
+        //console.log("Expect: ---------------------", await browser.isAlertOpen())
 
 
-        console.log("Antes del get Alert --------------------------------", await browser.isAlertOpen())
-        console.log(browser.isAlertOpen()); // outputs: false
-        console.log("Alert ----------------------- ", await browser.execute('window.alert()'))
+        //console.log("Antes del get Alert --------------------------------", await browser.isAlertOpen())
+        //console.log(browser.isAlertOpen()); // outputs: false
+        //console.log("Alert ----------------------- ", await browser.execute('window.alert()'))
         browser.pause(3000)
-        console.log("Antes del get Alert --------------------------------", await browser.isAlertOpen())
-        console.log("EXPECT -----------------------", expect(await browser.isAlertOpen()).to.be.true)
+        //console.log("Antes del get Alert --------------------------------", await browser.isAlertOpen())
+        //console.log("EXPECT -----------------------", expect(await browser.isAlertOpen()).to.be.true)
         await expect(msg).to.equal('You doble clicked. Thank you')
-        console.log("Expect ------------------", await expect(msg).to.equal('You doble clicked. Thank you..'))
+        //console.log("Expect ------------------", await expect(msg).to.equal('You doble clicked. Thank you..'))
     })
     it('Web Tables validation', async () => {
         await browser.url("https://rahulshettyacademy.com/seleniumPractise/#/offers")
